@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EdgeInferBench · CPU inference report</title>
+<style>
+:root{color-scheme:light;--ink:#172c40;--muted:#52677b;--teal:#007f78;--line:#d7e2e9}
+*{box-sizing:border-box}body{margin:0;background:#f1f5f7;color:var(--ink);font:15px/1.6 system-ui,sans-serif}
+main{max-width:1280px;margin:auto;padding:40px 28px}header{border-top:5px solid var(--teal);padding:30px;background:#102c42;color:#fff;border-radius:8px}
+h1{font-size:38px;line-height:1.15;margin:10px 0}h2{font-size:23px;margin-top:0}h3{font-size:17px}
+.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#80ded0}.subtle,small{color:var(--muted)}
+section{background:white;border:1px solid var(--line);padding:26px;margin:24px 0;border-radius:8px}
+.cards,.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}.card{border-left:3px solid var(--teal);padding-left:16px}.big{font-size:28px;font-weight:700}
+.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{text-align:left;border-bottom:1px solid var(--line);padding:11px 12px}th{background:#eef4f6}td.num{text-align:right}
+.ok{color:#08714f;font-weight:700}.failed,.skipped{color:#ad3d24;font-weight:700}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f7f8;padding:16px;border-radius:6px;font-size:12px}
+.barrow{margin:12px 0}.barlabel{display:flex;justify-content:space-between;font-size:12px;gap:12px}.track{background:#edf2f5;height:12px;margin-top:4px;border-radius:3px}.bar{height:12px;background:var(--teal);border-radius:3px}
+.chart{padding:15px;border:1px solid var(--line);border-radius:6px}.notice{padding:16px;background:#fef7e7;border-left:3px solid #c89320}
+code{font-size:12px;overflow-wrap:anywhere}details{margin:12px 0}summary{cursor:pointer;font-weight:600}footer{font-size:12px;color:var(--muted);margin:30px 0}
+@media print{body{background:white}main{padding:0}section{break-inside:avoid}details{display:block}header{print-color-adjust:exact}}
+</style></head><body><main>
+<header><div class="eyebrow">EdgeInferBench / v0.1.1 / measured CPU inference</div>
+<h1>Conversion you can verify.<br>Performance you can reproduce.</h1>
+<p>Technical experiment report · 2026-10-26T20:13:12.456945+00:00</p></header>
+<section><h2>Experiment summary</h2><div class="cards">
+<div class="card"><div class="big">1</div>Benchmark runs</div>
+<div class="card"><div class="big">1 / 1</div>Successful batch measurements</div>
+<div class="card"><div class="big">2</div>Numerical verification records</div></div>
+<p class="subtle">Synthetic FP32 inputs and synchronous CPU inference. All measurements originate from recorded runs; unavailable measurements have no numeric substitute.</p></section>
+<section><h2>Backend and batch comparison</h2><p class="subtle">Only rows in the same comparison group share source weights, input specification, precision, batch, seed, warmup, iterations, requested threads, and recorded environment. Runtime-specific settings are disclosed below. Different groups are separate experiments.</p>
+<div class="scroll"><table><thead><tr><th>Group / model</th><th>Backend</th><th>Batch</th><th>Threads</th><th>Status</th><th>Trials</th><th>P50 ms</th><th>P50 CI95 ms</th><th>Between-trial SD</th><th>P95 ms</th><th>P99 ms</th><th>Samples/s</th><th>RSS MB</th><th>Peak MB</th></tr></thead><tbody>
+<tr><td>76c8f05d / tiny</td><td>openvino</td><td>1</td><td>2</td><td class="ok">ok</td>
+<td>3 / 0</td>
+<td class="num">0.084</td>
+<td class="num">0.084–0.117</td><td class="num">0.019</td>
+<td class="num">0.113</td><td class="num">0.114</td><td class="num">11275.872</td><td class="num">115.225</td><td class="num">114.696</td></tr>
+</tbody></table></div></section>
+<section><h2>tiny · batch 1</h2><p class="subtle">Comparison group 76c8f05daf7ad302 · One measurement; no backend ranking is inferred.</p>
+<div class="charts"><div class="chart"><h3>P50 latency</h3>
+<div class="barrow"><div class="barlabel"><span>openvino</span><strong>0.084 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P95 latency</h3>
+<div class="barrow"><div class="barlabel"><span>openvino</span><strong>0.113 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P99 latency</h3>
+<div class="barrow"><div class="barlabel"><span>openvino</span><strong>0.114 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>Throughput</h3>
+<div class="barrow"><div class="barlabel"><span>openvino</span><strong>11275.872 samples/s</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>Peak observed process RSS</h3>
+<div class="barrow"><div class="barlabel"><span>openvino</span><strong>114.696 MB</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div></div></section>
+<section><h2>Correctness verification</h2><p>Passing means numerical equivalence at the stated tolerances for the tested inputs. It does not establish predictive accuracy. Random weights are used unless the model metadata says otherwise.</p>
+<details><summary class="ok">openvino · PASS · batches [1, 4] · 1 inputs/batch</summary><pre>{
+  "atol": 0.0001,
+  "backend": "openvino",
+  "backend_settings": {
+    "device": "CPU",
+    "inference_precision_hint": "f32",
+    "intra_op_threads": 2,
+    "num_streams": "1",
+    "performance_hint": "LATENCY",
+    "precision": "FP32",
+    "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+  },
+  "batch_sizes": [
+    1,
+    4
+  ],
+  "cases": [
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.9802322387695312e-08,
+          "max_relative_error": 3.548581200350174e-07,
+          "mean_absolute_error": 1.6391277313232423e-08,
+          "mean_relative_error": 1.132801192319817e-07,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.9802322387695312e-08,
+          "max_relative_error": 7.618368495913126e-07,
+          "mean_absolute_error": 1.1175870895385742e-08,
+          "mean_relative_error": 1.0938772391050512e-07,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          5
+        ]
+      ]
+    }
+  ],
+  "created_at": "2026-10-26T19:55:45.866553+00:00",
+  "inputs_per_batch": 1,
+  "kind": "validation",
+  "passed": true,
+  "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+  "rtol": 0.001,
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+  "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+}</pre></details>
+<details><summary class="ok">openvino · PASS · batches [1, 4] · 2 inputs/batch</summary><pre>{
+  "atol": 0.0001,
+  "backend": "openvino",
+  "backend_settings": {
+    "device": "CPU",
+    "inference_precision_hint": "f32",
+    "intra_op_threads": 2,
+    "num_streams": "1",
+    "performance_hint": "LATENCY",
+    "precision": "FP32",
+    "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+  },
+  "batch_sizes": [
+    1,
+    4
+  ],
+  "cases": [
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 1.4901161193847656e-08,
+          "max_relative_error": 2.923603891433724e-07,
+          "mean_absolute_error": 7.450580596923828e-09,
+          "mean_relative_error": 8.526682559699069e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 1.4901161193847656e-08,
+          "max_relative_error": 4.822698319000274e-07,
+          "mean_absolute_error": 8.940696716308593e-09,
+          "mean_relative_error": 1.5061777562475619e-07,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.9802322387695312e-08,
+          "max_relative_error": 1.032367828527833e-06,
+          "mean_absolute_error": 8.568167686462402e-09,
+          "mean_relative_error": 1.450462437941919e-07,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.9802322387695312e-08,
+          "max_relative_error": 3.305700614595858e-07,
+          "mean_absolute_error": 1.1175870895385742e-08,
+          "mean_relative_error": 8.045570871605685e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            5
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            5
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          5
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          5
+        ]
+      ]
+    }
+  ],
+  "created_at": "2026-10-26T19:55:40.723986+00:00",
+  "inputs_per_batch": 2,
+  "kind": "validation",
+  "passed": true,
+  "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+  "rtol": 0.001,
+  "schema_version": 1,
+  "seed": 11,
+  "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+  "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+}</pre></details>
+</section>
+<section><h2>Hardware, model provenance, and reproducibility</h2>
+<details><summary>tiny / openvino / 2026-10-26T19:55:47.603028+00:00</summary>
+<p><strong>AMD Ryzen 7 4800H with Radeon Graphics</strong> · x86_64 · 16 logical CPUs · Python 3.11.16</p>
+<p>Initialization: unavailable · process RSS before adapter loading: unavailable</p>
+<h3>Additional measured statistics</h3><div class="scroll"><table><thead><tr><th>Batch</th><th>Mean ms</th><th>Std ms</th><th>Min ms</th><th>Max ms</th><th>First inference ms</th><th>Artifact MB</th><th>Timed seconds</th><th>Samples processed</th><th>RSS observations</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">0.0887</td><td class="num">0.0110</td><td class="num">0.0787</td><td class="num">0.1147</td><td class="num">6.7160</td><td class="num">0.0073</td><td class="num">0.0027</td><td></td><td>2</td></tr></tbody></table></div>
+<h3>Settings</h3><pre>{
+  "batch_sizes": [
+    1
+  ],
+  "cpu_threads": 2,
+  "measurement_iterations": 30,
+  "random_seed": 42,
+  "timeout_seconds": 1800.0,
+  "trials": 3,
+  "warmup_iterations": 5
+}
+{
+  "device": "CPU",
+  "inference_precision_hint": "f32",
+  "intra_op_threads": 2,
+  "num_streams": "1",
+  "performance_hint": "LATENCY",
+  "precision": "FP32",
+  "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+}</pre><h3>Environment</h3><pre>{
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "cpu_frequency_mhz": {
+    "current_max": 3174.826,
+    "current_min": 2669.928,
+    "sample_count": 16
+  },
+  "distribution": {
+    "ANSI_COLOR": "0;38;2;126;186;228",
+    "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+    "BUILD_ID": "26.05.20261010.6fcc160",
+    "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+    "DEFAULT_HOSTNAME": "nixos",
+    "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+    "HOME_URL": "https://nixos.org/",
+    "ID": "nixos",
+    "ID_LIKE": "",
+    "IMAGE_ID": "",
+    "IMAGE_VERSION": "",
+    "LOGO": "nix-snowflake",
+    "NAME": "NixOS",
+    "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+    "SUPPORT_END": "2026-12-31",
+    "SUPPORT_URL": "https://nixos.org/community.html",
+    "VARIANT": "",
+    "VARIANT_ID": "",
+    "VENDOR_NAME": "NixOS",
+    "VENDOR_URL": "https://nixos.org/",
+    "VERSION": "26.05 (Yarara)",
+    "VERSION_CODENAME": "yarara",
+    "VERSION_ID": "26.05"
+  },
+  "git_commit": null,
+  "git_dirty": null,
+  "governors": [
+    "performance"
+  ],
+  "kernel": "6.18.55",
+  "logical_cpus": 16,
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "system_memory_mb": 24584.884224,
+  "thermal": [
+    {
+      "celsius": 73.0,
+      "path": "/sys/class/thermal/thermal_zone0/temp"
+    }
+  ],
+  "thread_environment": {
+    "KMP_AFFINITY": null,
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "versions": {
+    "edge-infer-bench": "0.1.1",
+    "numpy": "2.4.6",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.1",
+    "onnxscript": "0.7.2",
+    "openvino": "2026.4.1",
+    "psutil": "7.2.2",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu"
+  }
+}</pre>
+<h3>Conversion and source model</h3><pre>{
+  "architecture": "tiny",
+  "artifact_hashes": {
+    "tiny.bin": "efca37122b46a52c1ca0411faaeeaece5989759dc12ddf13f2a72334f3f22a16",
+    "tiny.xml": "3702e29d924be0d680d5af3de1163eee46aa8174c29011f4c807f3d3e52765d4"
+  },
+  "batch_size": 1,
+  "compress_to_fp16": false,
+  "conversion_time": "2026-10-26T19:55:37.696038+00:00",
+  "created_at": "2026-10-26T19:55:31.020384+00:00",
+  "dynamic_batch": true,
+  "exporter": "torch.onnx/dynamo",
+  "format": "openvino",
+  "input_spec": {
+    "channels": 3,
+    "distribution": "standard_normal",
+    "dtype": "float32",
+    "height": 8,
+    "layout": "NCHW",
+    "width": 8
+  },
+  "openvino_version": "2026.4.1-22982-e213a147257-releases/2026/4",
+  "opset": 18,
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "reference": "tiny_reference",
+  "schema_version": 1,
+  "seed": 11,
+  "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+  "source_onnx_sha256": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63",
+  "torch_version": "2.14.1+cpu",
+  "torchvision_version": "0.29.1+cpu",
+  "trace_batch_size": 2,
+  "validation": {
+    "atol": 0.0001,
+    "backend": "openvino",
+    "backend_settings": {
+      "device": "CPU",
+      "inference_precision_hint": "f32",
+      "intra_op_threads": 2,
+      "num_streams": "1",
+      "performance_hint": "LATENCY",
+      "precision": "FP32",
+      "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+    },
+    "batch_sizes": [
+      1,
+      4
+    ],
+    "cases": [
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 1.4901161193847656e-08,
+            "max_relative_error": 2.923603891433724e-07,
+            "mean_absolute_error": 7.450580596923828e-09,
+            "mean_relative_error": 8.526682559699069e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              5
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              5
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 1.4901161193847656e-08,
+            "max_relative_error": 4.822698319000274e-07,
+            "mean_absolute_error": 8.940696716308593e-09,
+            "mean_relative_error": 1.5061777562475619e-07,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              5
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              5
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 2.9802322387695312e-08,
+            "max_relative_error": 1.032367828527833e-06,
+            "mean_absolute_error": 8.568167686462402e-09,
+            "mean_relative_error": 1.450462437941919e-07,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              5
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              5
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 2.9802322387695312e-08,
+            "max_relative_error": 3.305700614595858e-07,
+            "mean_absolute_error": 1.1175870895385742e-08,
+            "mean_relative_error": 8.045570871605685e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              5
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              5
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            5
+          ]
+        ]
+      }
+    ],
+    "created_at": "2026-10-26T19:55:40.723986+00:00",
+    "inputs_per_batch": 2,
+    "kind": "validation",
+    "passed": true,
+    "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+    "rtol": 0.001,
+    "schema_version": 1,
+    "seed": 11,
+    "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+    "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+  },
+  "weights": "random"
+}</pre></details></section>
+<section><h2>Batch-size analysis and interpretation</h2><p>Compare each batch's per-request latency with its samples/second. Larger batches can increase throughput while increasing request latency and RSS. Charts use separate scales for each group; bar lengths across groups do not encode a shared scale. Read the numeric values when assessing batch scaling.</p>
+<h2>Limitations and methodology</h2><ul>
+<li>Model loading, compilation, input generation, and serialization are excluded from steady-state timing. A first inference is timed separately before the configured warmup. Timed inference includes synchronous output normalization into host arrays.</li>
+<li>P50/P95/P99 use NumPy linear percentiles; standard deviation is the population statistic. Throughput is processed samples divided by the sum of timed inference durations.</li>
+<li>RSS is total process resident memory in decimal MB, including libraries and allocators. It is not model-exclusive memory. RSS is sampled every 20 ms during warmup/measurement; observed peaks can miss shorter allocations. Earlier batches can retain allocations.</li>
+<li>Backend graph optimizations and thread schedulers differ. A matching requested thread count does not guarantee identical resource use. Check effective backend settings. No universal backend speed claim follows from this report.</li>
+<li>Thermal state, CPU boost, power policy, background load, process affinity, and run order affect measurements. Repeat runs in fresh processes on an otherwise idle machine.</li>
+<li>Microbenchmarks are not end-to-end application performance. AMD OpenVINO compatibility is established only when actual CPU compilation, inference, and numerical checks succeed.</li>
+</ul></section><footer>Generated offline by edge-infer-bench · MIT licensed · No external scripts, fonts, or chart services.</footer>
+</main></body></html>

@@ -1,0 +1,28 @@
+EdgeInferBench v0.1.0 — actual verification
+
+Commands: .venv/bin/python -m ruff check .; .venv/bin/python -m ruff format --check .
+Result: all checks passed; Python source and documented Python example formatted.
+
+Command: LD_LIBRARY_PATH=/run/current-system/sw/share/nix-ld/lib .venv/bin/python -m pytest -q
+........s.......................................                         [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/integration/test_pipeline.py:184: OpenVINO not installed; CPU compatibility unverified
+47 passed, 1 skipped in 20.54s
+
+Command: LD_LIBRARY_PATH=/run/current-system/sw/share/nix-ld/lib .venv/bin/python -m build --no-isolation
+* Getting build dependencies for sdist...
+* Building sdist...
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+* Building wheel...
+Successfully built edge_infer_bench-0.1.0.tar.gz and edge_infer_bench-0.1.0-py3-none-any.whl
+
+Command: uv pip check --python .venv/bin/python
+Result: 61 packages checked; all installed packages compatible.
+
+Command: nix-instantiate --parse flake.nix
+Result: exit 0; syntax valid. Entering/locking the devShell remains unverified because the managed sandbox denies the Nix daemon socket.
+
+Installed-wheel smoke: created /tmp/edgebench-wheel-smoke, installed built wheel --no-deps, reused the prepared environment only for dependencies, checked --version and generated offline HTML from retained actual data. Package import was verified to originate from the installed wheel, not editable source.
+
+Browser verification: system Edge failed setsockopt with Operation not permitted. A cached headless Chromium was given isolated native-library paths, then failed sandbox_host_linux shutdown with Operation not permitted. No screenshot was produced or claimed.

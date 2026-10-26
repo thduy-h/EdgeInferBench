@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "architecture": "tiny",
+  "seed": 11,
+  "weights": "random",
+  "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+  "input_spec": {
+    "channels": 3,
+    "height": 8,
+    "width": 8,
+    "dtype": "float32",
+    "layout": "NCHW",
+    "distribution": "standard_normal"
+  },
+  "torch_version": "2.14.1+cpu",
+  "torchvision_version": "0.29.1+cpu",
+  "created_at": "2026-10-26T19:55:31.020384+00:00",
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "format": "onnx",
+  "dynamic_batch": true,
+  "batch_size": 1,
+  "trace_batch_size": 2,
+  "opset": 18,
+  "exporter": "torch.onnx/dynamo",
+  "reference": "tiny_reference",
+  "artifact_hashes": {
+    "tiny.onnx": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63"
+  },
+  "validation": {
+    "schema_version": 1,
+    "kind": "validation",
+    "created_at": "2026-10-26T19:55:35.371759+00:00",
+    "passed": true,
+    "backend": "onnxruntime",
+    "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+    "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+    "target": "/tmp/edgebench-v011-ov-1793044520/tiny.onnx",
+    "seed": 11,
+    "batch_sizes": [
+      1,
+      4
+    ],
+    "inputs_per_batch": 2,
+    "atol": 0.0001,
+    "rtol": 0.001,
+    "backend_settings": {
+      "version": "1.31.1",
+      "device": "CPU",
+      "precision": "FP32",
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "intra_op_threads": 2,
+      "inter_op_threads": 1,
+      "execution_mode": "sequential",
+      "graph_optimization": "all",
+      "allow_spinning": false
+    },
+    "cases": [
+      {
+        "batch_size": 1,
+        "input_index": 0,
+        "passed": true,
+        "reference_output_count": 1,
+        "target_output_count": 1,
+        "mismatched_output_count": 0,
+        "reference_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "target_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "reference_shape": [
+              1,
+              5
+            ],
+            "target_shape": [
+              1,
+              5
+            ],
+            "reference_dtype": "float32",
+            "target_dtype": "float32",
+            "atol": 0.0001,
+            "rtol": 0.001,
+            "allclose_passed": true,
+            "max_absolute_error": 1.4901161193847656e-08,
+            "mean_absolute_error": 7.450580596923828e-09,
+            "max_relative_error": 2.923603891433724e-07,
+            "mean_relative_error": 8.526682559699069e-08,
+            "mismatched_elements": 0
+          }
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "atol": 0.0001,
+        "rtol": 0.001
+      },
+      {
+        "batch_size": 1,
+        "input_index": 1,
+        "passed": true,
+        "reference_output_count": 1,
+        "target_output_count": 1,
+        "mismatched_output_count": 0,
+        "reference_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "target_shapes": [
+          [
+            1,
+            5
+          ]
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "reference_shape": [
+              1,
+              5
+            ],
+            "target_shape": [
+              1,
+              5
+            ],
+            "reference_dtype": "float32",
+            "target_dtype": "float32",
+            "atol": 0.0001,
+            "rtol": 0.001,
+            "allclose_passed": true,
+            "max_absolute_error": 1.4901161193847656e-08,
+            "mean_absolute_error": 4.470348358154297e-09,
+            "max_relative_error": 1.0526619399338465e-07,
+            "mean_relative_error": 3.452026105757733e-08,
+            "mismatched_elements": 0
+          }
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "atol": 0.0001,
+        "rtol": 0.001
+      },
+      {
+        "batch_size": 4,
+        "input_index": 0,
+        "passed": true,
+        "reference_output_count": 1,
+        "target_output_count": 1,
+        "mismatched_output_count": 0,
+        "reference_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "target_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "reference_shape": [
+              4,
+              5
+            ],
+            "target_shape": [
+              4,
+              5
+            ],
+            "reference_dtype": "float32",
+            "target_dtype": "float32",
+            "atol": 0.0001,
+            "rtol": 0.001,
+            "allclose_passed": true,
+            "max_absolute_error": 2.9802322387695312e-08,
+            "mean_absolute_error": 8.940696716308593e-09,
+            "max_relative_error": 1.032367828527833e-06,
+            "mean_relative_error": 1.442052381000069e-07,
+            "mismatched_elements": 0
+          }
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "atol": 0.0001,
+        "rtol": 0.001
+      },
+      {
+        "batch_size": 4,
+        "input_index": 1,
+        "passed": true,
+        "reference_output_count": 1,
+        "target_output_count": 1,
+        "mismatched_output_count": 0,
+        "reference_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "target_shapes": [
+          [
+            4,
+            5
+          ]
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "reference_shape": [
+              4,
+              5
+            ],
+            "target_shape": [
+              4,
+              5
+            ],
+            "reference_dtype": "float32",
+            "target_dtype": "float32",
+            "atol": 0.0001,
+            "rtol": 0.001,
+            "allclose_passed": true,
+            "max_absolute_error": 2.9802322387695312e-08,
+            "mean_absolute_error": 1.0989606380462647e-08,
+            "max_relative_error": 1.2247862441807344e-06,
+            "mean_relative_error": 1.5876891472905787e-07,
+            "mismatched_elements": 0
+          }
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "atol": 0.0001,
+        "rtol": 0.001
+      }
+    ]
+  }
+}

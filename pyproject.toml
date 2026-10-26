@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "edge-infer-bench"
+version = "0.1.1"
+description = "Reproducible CPU model conversion, numerical validation, and inference benchmarks"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = "MIT"
+authors = [{name = "EdgeInferBench contributors"}]
+classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Topic :: Scientific/Engineering :: Artificial Intelligence"]
+dependencies = [
+  "numpy>=1.26,<3", "psutil>=5.9,<8", "typer>=0.15,<1", "rich>=13,<15",
+  "jinja2>=3.1.6,<4", "torch>=2.6,<3", "torchvision>=0.21,<1",
+  "onnx>=1.17,<2", "onnxscript>=0.3,<1", "onnxruntime>=1.20,<2",
+]
+
+[project.optional-dependencies]
+openvino = ["openvino>=2025.0,<2027"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "build>=1.2,<2"]
+
+[project.scripts]
+edgebench = "edge_infer_bench.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/edge_infer_bench"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: actual conversion and inference", "openvino: optional OpenVINO runtime", "smoke: real torchvision model smoke test"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/edge_infer_bench/cli.py" = ["B008"]
+
+# uv uses CPU wheels without changing pip's index for unrelated dependencies.
+[tool.uv.sources]
+torch = {index = "pytorch-cpu"}
+torchvision = {index = "pytorch-cpu"}
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

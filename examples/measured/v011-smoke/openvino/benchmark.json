@@ -1,0 +1,1750 @@
+{
+  "aggregation": {
+    "bootstrap_samples": 4000,
+    "confidence_interval": "percentile bootstrap over independent trials; exploratory for n<10",
+    "failed_trial_count": 0,
+    "statistic": "median of independent trial-level summaries",
+    "successful_trial_count": 3
+  },
+  "backend": "openvino",
+  "backend_settings": {
+    "device": "CPU",
+    "inference_precision_hint": "f32",
+    "intra_op_threads": 2,
+    "num_streams": "1",
+    "performance_hint": "LATENCY",
+    "precision": "FP32",
+    "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+  },
+  "completed_trials": 3,
+  "config": {
+    "batch_sizes": [
+      1
+    ],
+    "cpu_threads": 2,
+    "measurement_iterations": 30,
+    "random_seed": 42,
+    "timeout_seconds": 1800.0,
+    "trials": 3,
+    "warmup_iterations": 5
+  },
+  "created_at": "2026-10-26T19:55:47.603028+00:00",
+  "environment": {
+    "architecture": "x86_64",
+    "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "cpu_frequency_mhz": {
+      "current_max": 3174.826,
+      "current_min": 2669.928,
+      "sample_count": 16
+    },
+    "distribution": {
+      "ANSI_COLOR": "0;38;2;126;186;228",
+      "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+      "BUILD_ID": "26.05.20261010.6fcc160",
+      "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+      "DEFAULT_HOSTNAME": "nixos",
+      "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+      "HOME_URL": "https://nixos.org/",
+      "ID": "nixos",
+      "ID_LIKE": "",
+      "IMAGE_ID": "",
+      "IMAGE_VERSION": "",
+      "LOGO": "nix-snowflake",
+      "NAME": "NixOS",
+      "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+      "SUPPORT_END": "2026-12-31",
+      "SUPPORT_URL": "https://nixos.org/community.html",
+      "VARIANT": "",
+      "VARIANT_ID": "",
+      "VENDOR_NAME": "NixOS",
+      "VENDOR_URL": "https://nixos.org/",
+      "VERSION": "26.05 (Yarara)",
+      "VERSION_CODENAME": "yarara",
+      "VERSION_ID": "26.05"
+    },
+    "git_commit": null,
+    "git_dirty": null,
+    "governors": [
+      "performance"
+    ],
+    "kernel": "6.18.55",
+    "logical_cpus": 16,
+    "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+    "physical_cpus": 8,
+    "python": "3.11.16",
+    "system_memory_mb": 24584.884224,
+    "thermal": [
+      {
+        "celsius": 73.0,
+        "path": "/sys/class/thermal/thermal_zone0/temp"
+      }
+    ],
+    "thread_environment": {
+      "KMP_AFFINITY": null,
+      "MKL_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null
+    },
+    "versions": {
+      "edge-infer-bench": "0.1.1",
+      "numpy": "2.4.6",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.31.1",
+      "onnxscript": "0.7.2",
+      "openvino": "2026.4.1",
+      "psutil": "7.2.2",
+      "torch": "2.14.1+cpu",
+      "torchvision": "0.29.1+cpu"
+    }
+  },
+  "execution_order": [
+    0,
+    1,
+    2
+  ],
+  "failed_trials": 0,
+  "kind": "benchmark",
+  "model": "/tmp/edgebench-v011-ov-1793044520/tiny.xml",
+  "model_metadata": {
+    "architecture": "tiny",
+    "artifact_hashes": {
+      "tiny.bin": "efca37122b46a52c1ca0411faaeeaece5989759dc12ddf13f2a72334f3f22a16",
+      "tiny.xml": "3702e29d924be0d680d5af3de1163eee46aa8174c29011f4c807f3d3e52765d4"
+    },
+    "batch_size": 1,
+    "compress_to_fp16": false,
+    "conversion_time": "2026-10-26T19:55:37.696038+00:00",
+    "created_at": "2026-10-26T19:55:31.020384+00:00",
+    "dynamic_batch": true,
+    "exporter": "torch.onnx/dynamo",
+    "format": "openvino",
+    "input_spec": {
+      "channels": 3,
+      "distribution": "standard_normal",
+      "dtype": "float32",
+      "height": 8,
+      "layout": "NCHW",
+      "width": 8
+    },
+    "openvino_version": "2026.4.1-22982-e213a147257-releases/2026/4",
+    "opset": 18,
+    "precision": "FP32",
+    "preprocessing": {
+      "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+      "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+    },
+    "reference": "tiny_reference",
+    "schema_version": 1,
+    "seed": 11,
+    "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+    "source_onnx_sha256": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63",
+    "torch_version": "2.14.1+cpu",
+    "torchvision_version": "0.29.1+cpu",
+    "trace_batch_size": 2,
+    "validation": {
+      "atol": 0.0001,
+      "backend": "openvino",
+      "backend_settings": {
+        "device": "CPU",
+        "inference_precision_hint": "f32",
+        "intra_op_threads": 2,
+        "num_streams": "1",
+        "performance_hint": "LATENCY",
+        "precision": "FP32",
+        "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+      },
+      "batch_sizes": [
+        1,
+        4
+      ],
+      "cases": [
+        {
+          "atol": 0.0001,
+          "batch_size": 1,
+          "input_index": 0,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 1.4901161193847656e-08,
+              "max_relative_error": 2.923603891433724e-07,
+              "mean_absolute_error": 7.450580596923828e-09,
+              "mean_relative_error": 8.526682559699069e-08,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                1,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                1,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              1,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 1,
+          "input_index": 1,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 1.4901161193847656e-08,
+              "max_relative_error": 4.822698319000274e-07,
+              "mean_absolute_error": 8.940696716308593e-09,
+              "mean_relative_error": 1.5061777562475619e-07,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                1,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                1,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              1,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 4,
+          "input_index": 0,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 2.9802322387695312e-08,
+              "max_relative_error": 1.032367828527833e-06,
+              "mean_absolute_error": 8.568167686462402e-09,
+              "mean_relative_error": 1.450462437941919e-07,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                4,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                4,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              4,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              4,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 4,
+          "input_index": 1,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 2.9802322387695312e-08,
+              "max_relative_error": 3.305700614595858e-07,
+              "mean_absolute_error": 1.1175870895385742e-08,
+              "mean_relative_error": 8.045570871605685e-08,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                4,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                4,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              4,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      ],
+      "created_at": "2026-10-26T19:55:40.723986+00:00",
+      "inputs_per_batch": 2,
+      "kind": "validation",
+      "passed": true,
+      "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+      "rtol": 0.001,
+      "schema_version": 1,
+      "seed": 11,
+      "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+      "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+    },
+    "weights": "random"
+  },
+  "results": [
+    {
+      "baseline_rss_mb": 39.6288,
+      "batch_size": 1,
+      "between_trial_p50_std_ms": 0.01898219337519596,
+      "between_trial_throughput_std_samples_s": 1792.9062718966109,
+      "completed_trials": 3,
+      "failed_trials": 0,
+      "first_inference_ms": 6.715972,
+      "incremental_rss_mb": 67.03104,
+      "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+      "max_ms": 0.11468,
+      "mean_ms": 0.08868493333333333,
+      "measured_duration_s": 0.002660548,
+      "memory_samples": 2,
+      "min_ms": 0.078712,
+      "model_artifact_mb": 0.007301,
+      "p50_ci95_ms": [
+        0.08402,
+        0.11695
+      ],
+      "p50_ms": 0.084124,
+      "p95_ms": 0.1125813,
+      "p99_ms": 0.11433577,
+      "peak_incremental_rss_mb": 75.067392,
+      "peak_observed_rss_mb": 114.696192,
+      "rss_after_benchmark_mb": 115.224576,
+      "rss_after_initialization_mb": 106.65984,
+      "rss_mb": 115.224576,
+      "status": "ok",
+      "std_ms": 0.011048925992853583,
+      "throughput_ci95_samples_s": [
+        8374.78853658945,
+        11650.521632688567
+      ],
+      "throughput_samples_s": 11275.87248942699,
+      "trial_duration_s": 0.26078626402886584,
+      "trial_p50_ms": [
+        0.08402,
+        0.084124,
+        0.11695
+      ],
+      "trial_throughput_samples_s": [
+        11650.521632688567,
+        11275.87248942699,
+        8374.78853658945
+      ]
+    }
+  ],
+  "schema_version": 2,
+  "status": "ok",
+  "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+  "tool_version": "0.1.1",
+  "trial_count": 3,
+  "trials": [
+    {
+      "backend": "openvino",
+      "backend_settings": {
+        "device": "CPU",
+        "inference_precision_hint": "f32",
+        "intra_op_threads": 2,
+        "num_streams": "1",
+        "performance_hint": "LATENCY",
+        "precision": "FP32",
+        "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+      },
+      "baseline_before_load_rss_mb": 39.6288,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:55:48.067847+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 3174.826,
+          "current_min": 2669.928,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 73.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": "2026.4.1",
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 67.0792,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-ov-1793044520/tiny.xml",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.bin": "efca37122b46a52c1ca0411faaeeaece5989759dc12ddf13f2a72334f3f22a16",
+          "tiny.xml": "3702e29d924be0d680d5af3de1163eee46aa8174c29011f4c807f3d3e52765d4"
+        },
+        "batch_size": 1,
+        "compress_to_fp16": false,
+        "conversion_time": "2026-10-26T19:55:37.696038+00:00",
+        "created_at": "2026-10-26T19:55:31.020384+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "openvino",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "openvino_version": "2026.4.1-22982-e213a147257-releases/2026/4",
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 11,
+        "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+        "source_onnx_sha256": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "openvino",
+          "backend_settings": {
+            "device": "CPU",
+            "inference_precision_hint": "f32",
+            "intra_op_threads": 2,
+            "num_streams": "1",
+            "performance_hint": "LATENCY",
+            "precision": "FP32",
+            "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 2.923603891433724e-07,
+                  "mean_absolute_error": 7.450580596923828e-09,
+                  "mean_relative_error": 8.526682559699069e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 4.822698319000274e-07,
+                  "mean_absolute_error": 8.940696716308593e-09,
+                  "mean_relative_error": 1.5061777562475619e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.032367828527833e-06,
+                  "mean_absolute_error": 8.568167686462402e-09,
+                  "mean_relative_error": 1.450462437941919e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.305700614595858e-07,
+                  "mean_absolute_error": 1.1175870895385742e-08,
+                  "mean_relative_error": 8.045570871605685e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:55:40.723986+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 11,
+          "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+          "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3767903,
+      "python_executable": "/tmp/edgebench-openvino-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 39.6288,
+          "batch_size": 1,
+          "first_inference_ms": 6.715972,
+          "incremental_rss_mb": 67.03104,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            86814,
+            92261,
+            87302,
+            84090,
+            85347,
+            93937,
+            83950,
+            81715,
+            80667,
+            87791,
+            81086,
+            81575,
+            79200,
+            80108,
+            78712,
+            80039,
+            82343,
+            95753,
+            83391,
+            94007,
+            83460,
+            85416,
+            84927,
+            81016,
+            80737,
+            91353,
+            91771,
+            83880,
+            84299,
+            108045
+          ],
+          "max_ms": 0.108045,
+          "mean_ms": 0.08583306666666668,
+          "measured_duration_s": 0.002574992,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.078712,
+          "model_artifact_mb": 0.007301,
+          "p50_ms": 0.08402,
+          "p95_ms": 0.09496729999999999,
+          "p99_ms": 0.10448032000000002,
+          "peak_incremental_rss_mb": 75.067392,
+          "peak_observed_rss_mb": 114.696192,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 115.224576,
+          "rss_after_initialization_mb": 106.65984,
+          "rss_mb": 115.224576,
+          "status": "ok",
+          "std_ms": 0.006246499595417865,
+          "throughput_samples_s": 11650.521632688567
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.27106024901149794,
+      "trial_index": 0
+    },
+    {
+      "backend": "openvino",
+      "backend_settings": {
+        "device": "CPU",
+        "inference_precision_hint": "f32",
+        "intra_op_threads": 2,
+        "num_streams": "1",
+        "performance_hint": "LATENCY",
+        "precision": "FP32",
+        "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+      },
+      "baseline_before_load_rss_mb": 39.645184,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:55:48.772671+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 4291.567,
+          "current_min": 1113.175,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 82.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": "2026.4.1",
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 60.287868,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-ov-1793044520/tiny.xml",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.bin": "efca37122b46a52c1ca0411faaeeaece5989759dc12ddf13f2a72334f3f22a16",
+          "tiny.xml": "3702e29d924be0d680d5af3de1163eee46aa8174c29011f4c807f3d3e52765d4"
+        },
+        "batch_size": 1,
+        "compress_to_fp16": false,
+        "conversion_time": "2026-10-26T19:55:37.696038+00:00",
+        "created_at": "2026-10-26T19:55:31.020384+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "openvino",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "openvino_version": "2026.4.1-22982-e213a147257-releases/2026/4",
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 11,
+        "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+        "source_onnx_sha256": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "openvino",
+          "backend_settings": {
+            "device": "CPU",
+            "inference_precision_hint": "f32",
+            "intra_op_threads": 2,
+            "num_streams": "1",
+            "performance_hint": "LATENCY",
+            "precision": "FP32",
+            "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 2.923603891433724e-07,
+                  "mean_absolute_error": 7.450580596923828e-09,
+                  "mean_relative_error": 8.526682559699069e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 4.822698319000274e-07,
+                  "mean_absolute_error": 8.940696716308593e-09,
+                  "mean_relative_error": 1.5061777562475619e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.032367828527833e-06,
+                  "mean_absolute_error": 8.568167686462402e-09,
+                  "mean_relative_error": 1.450462437941919e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.305700614595858e-07,
+                  "mean_absolute_error": 1.1175870895385742e-08,
+                  "mean_relative_error": 8.045570871605685e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:55:40.723986+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 11,
+          "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+          "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3767938,
+      "python_executable": "/tmp/edgebench-openvino-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 39.645184,
+          "batch_size": 1,
+          "first_inference_ms": 4.583498,
+          "incremental_rss_mb": 67.03104,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            95195,
+            114680,
+            90724,
+            99245,
+            111467,
+            97150,
+            83461,
+            82623,
+            113493,
+            90165,
+            88210,
+            86045,
+            84787,
+            92470,
+            96451,
+            80597,
+            82134,
+            79899,
+            78782,
+            108045,
+            78362,
+            80108,
+            79271,
+            78223,
+            79200,
+            91003,
+            81156,
+            79759,
+            78572,
+            79271
+          ],
+          "max_ms": 0.11468,
+          "mean_ms": 0.08868493333333333,
+          "measured_duration_s": 0.002660548,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.078223,
+          "model_artifact_mb": 0.007301,
+          "p50_ms": 0.084124,
+          "p95_ms": 0.1125813,
+          "p99_ms": 0.11433577,
+          "peak_incremental_rss_mb": 75.124736,
+          "peak_observed_rss_mb": 114.76992,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 115.298304,
+          "rss_after_initialization_mb": 106.676224,
+          "rss_mb": 115.298304,
+          "status": "ok",
+          "std_ms": 0.011048925992853583,
+          "throughput_samples_s": 11275.87248942699
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.26078626402886584,
+      "trial_index": 1
+    },
+    {
+      "backend": "openvino",
+      "backend_settings": {
+        "device": "CPU",
+        "inference_precision_hint": "f32",
+        "intra_op_threads": 2,
+        "num_streams": "1",
+        "performance_hint": "LATENCY",
+        "precision": "FP32",
+        "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+      },
+      "baseline_before_load_rss_mb": 39.624704,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:55:49.480308+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 4287.939,
+          "current_min": 1113.175,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 82.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": "2026.4.1",
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 68.443137,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-ov-1793044520/tiny.xml",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.bin": "efca37122b46a52c1ca0411faaeeaece5989759dc12ddf13f2a72334f3f22a16",
+          "tiny.xml": "3702e29d924be0d680d5af3de1163eee46aa8174c29011f4c807f3d3e52765d4"
+        },
+        "batch_size": 1,
+        "compress_to_fp16": false,
+        "conversion_time": "2026-10-26T19:55:37.696038+00:00",
+        "created_at": "2026-10-26T19:55:31.020384+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "openvino",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "openvino_version": "2026.4.1-22982-e213a147257-releases/2026/4",
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 11,
+        "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+        "source_onnx_sha256": "aba765a8a51a22c683fe89b557c8952a5d67a2f07a79362c467f9a07fc464c63",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "openvino",
+          "backend_settings": {
+            "device": "CPU",
+            "inference_precision_hint": "f32",
+            "intra_op_threads": 2,
+            "num_streams": "1",
+            "performance_hint": "LATENCY",
+            "precision": "FP32",
+            "version": "2026.4.1-22982-e213a147257-releases/2026/4"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 2.923603891433724e-07,
+                  "mean_absolute_error": 7.450580596923828e-09,
+                  "mean_relative_error": 8.526682559699069e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 4.822698319000274e-07,
+                  "mean_absolute_error": 8.940696716308593e-09,
+                  "mean_relative_error": 1.5061777562475619e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.032367828527833e-06,
+                  "mean_absolute_error": 8.568167686462402e-09,
+                  "mean_relative_error": 1.450462437941919e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.305700614595858e-07,
+                  "mean_absolute_error": 1.1175870895385742e-08,
+                  "mean_relative_error": 8.045570871605685e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:55:40.723986+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-ov-1793044520/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 11,
+          "source_id": "3285668d74218ac891ed241c47fac7cfea9ce5b1e6b6be79ac8bbd273771e5ec",
+          "target": "/tmp/edgebench-v011-ov-1793044520/tiny.xml"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3767968,
+      "python_executable": "/tmp/edgebench-openvino-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 39.624704,
+          "batch_size": 1,
+          "first_inference_ms": 7.132928,
+          "incremental_rss_mb": 67.03103999999999,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            120687,
+            121385,
+            139893,
+            121385,
+            111467,
+            111328,
+            105811,
+            111398,
+            110001,
+            124388,
+            127042,
+            111118,
+            108324,
+            104413,
+            107696,
+            106089,
+            109721,
+            103086,
+            106788,
+            117544,
+            116356,
+            115448,
+            132070,
+            141499,
+            130464,
+            131721,
+            122572,
+            163151,
+            127810,
+            121525
+          ],
+          "max_ms": 0.163151,
+          "mean_ms": 0.11940600000000003,
+          "measured_duration_s": 0.00358218,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.103086,
+          "model_artifact_mb": 0.007301,
+          "p50_ms": 0.11695,
+          "p95_ms": 0.1407763,
+          "p99_ms": 0.15687192000000003,
+          "peak_incremental_rss_mb": 75.04691199999999,
+          "peak_observed_rss_mb": 114.671616,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 115.2,
+          "rss_after_initialization_mb": 106.655744,
+          "rss_mb": 115.2,
+          "status": "ok",
+          "std_ms": 0.013137400815990961,
+          "throughput_samples_s": 8374.78853658945
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.25287907203892246,
+      "trial_index": 2
+    }
+  ]
+}

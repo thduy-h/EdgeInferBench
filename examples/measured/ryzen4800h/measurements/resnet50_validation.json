@@ -1,0 +1,587 @@
+{
+  "schema_version": 1,
+  "kind": "validation",
+  "created_at": "2026-10-26T19:01:27.693942+00:00",
+  "passed": true,
+  "backend": "onnxruntime",
+  "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+  "reference": "artifacts/development-resnet50/artifacts/resnet50_reference",
+  "target": "artifacts/development-resnet50/artifacts/resnet50.onnx",
+  "seed": 42,
+  "batch_sizes": [
+    1,
+    4,
+    8,
+    16
+  ],
+  "inputs_per_batch": 3,
+  "atol": 0.0001,
+  "rtol": 0.001,
+  "backend_settings": {
+    "version": "1.31.0",
+    "device": "CPU",
+    "precision": "FP32",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "intra_op_threads": 4,
+    "inter_op_threads": 1,
+    "execution_mode": "sequential",
+    "graph_optimization": "all",
+    "allow_spinning": false
+  },
+  "cases": [
+    {
+      "batch_size": 1,
+      "input_index": 0,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "target_shape": [
+            1,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.814697265625e-05,
+          "mean_absolute_error": 7.938627153635025e-06,
+          "max_relative_error": 0.0005280624584686445,
+          "mean_relative_error": 3.4552968458827795e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 1,
+      "input_index": 1,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "target_shape": [
+            1,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.814697265625e-05,
+          "mean_absolute_error": 8.053921163082123e-06,
+          "max_relative_error": 0.0026403230195094726,
+          "mean_relative_error": 6.019774340176435e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 1,
+      "input_index": 2,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "target_shape": [
+            1,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.5762786865234375e-05,
+          "mean_absolute_error": 7.998239248991012e-06,
+          "max_relative_error": 0.00039768018775588747,
+          "mean_relative_error": 2.507908489080429e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 4,
+      "input_index": 0,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "target_shape": [
+            4,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.0517578125e-05,
+          "mean_absolute_error": 6.197161972522736e-06,
+          "max_relative_error": 0.001000250062515629,
+          "mean_relative_error": 2.1198969892229435e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 4,
+      "input_index": 1,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "target_shape": [
+            4,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.147125244140625e-05,
+          "mean_absolute_error": 6.165824830532074e-06,
+          "max_relative_error": 0.0010810031709426347,
+          "mean_relative_error": 2.408103533936859e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 4,
+      "input_index": 2,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "target_shape": [
+            4,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.4332275390625e-05,
+          "mean_absolute_error": 6.1280280351638795e-06,
+          "max_relative_error": 0.000794841224055485,
+          "mean_relative_error": 2.209449944201948e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 8,
+      "input_index": 0,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            8,
+            1000
+          ],
+          "target_shape": [
+            8,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.528594970703125e-05,
+          "mean_absolute_error": 6.1511890962719915e-06,
+          "max_relative_error": 0.0022295991676163107,
+          "mean_relative_error": 2.540685572641988e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 8,
+      "input_index": 1,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            8,
+            1000
+          ],
+          "target_shape": [
+            8,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.4332275390625e-05,
+          "mean_absolute_error": 6.186913698911667e-06,
+          "max_relative_error": 0.0006646940263304601,
+          "mean_relative_error": 1.8953600794050256e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 8,
+      "input_index": 2,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          8,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            8,
+            1000
+          ],
+          "target_shape": [
+            8,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.24249267578125e-05,
+          "mean_absolute_error": 6.137216463685036e-06,
+          "max_relative_error": 0.0003198123767389798,
+          "mean_relative_error": 1.7463515355318407e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 16,
+      "input_index": 0,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            16,
+            1000
+          ],
+          "target_shape": [
+            16,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.814697265625e-05,
+          "mean_absolute_error": 6.1901826411485675e-06,
+          "max_relative_error": 0.01264718709114697,
+          "mean_relative_error": 3.0202022148924437e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 16,
+      "input_index": 1,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            16,
+            1000
+          ],
+          "target_shape": [
+            16,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.4332275390625e-05,
+          "mean_absolute_error": 6.178628653287888e-06,
+          "max_relative_error": 0.002809769351900454,
+          "mean_relative_error": 2.3075893828257067e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    },
+    {
+      "batch_size": 16,
+      "input_index": 2,
+      "passed": true,
+      "reference_output_count": 1,
+      "target_output_count": 1,
+      "mismatched_output_count": 0,
+      "reference_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "target_shapes": [
+        [
+          16,
+          1000
+        ]
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "reference_shape": [
+            16,
+            1000
+          ],
+          "target_shape": [
+            16,
+            1000
+          ],
+          "reference_dtype": "float32",
+          "target_dtype": "float32",
+          "atol": 0.0001,
+          "rtol": 0.001,
+          "allclose_passed": true,
+          "max_absolute_error": 3.4332275390625e-05,
+          "mean_absolute_error": 6.213300861418247e-06,
+          "max_relative_error": 0.09037900874635568,
+          "mean_relative_error": 8.153308246547846e-06,
+          "mismatched_elements": 0
+        }
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "atol": 0.0001,
+      "rtol": 0.001
+    }
+  ]
+}

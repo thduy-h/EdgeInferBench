@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EdgeInferBench · CPU inference report</title>
+<style>
+:root{color-scheme:light;--ink:#172c40;--muted:#52677b;--teal:#007f78;--line:#d7e2e9}
+*{box-sizing:border-box}body{margin:0;background:#f1f5f7;color:var(--ink);font:15px/1.6 system-ui,sans-serif}
+main{max-width:1280px;margin:auto;padding:40px 28px}header{border-top:5px solid var(--teal);padding:30px;background:#102c42;color:#fff;border-radius:8px}
+h1{font-size:38px;line-height:1.15;margin:10px 0}h2{font-size:23px;margin-top:0}h3{font-size:17px}
+.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#80ded0}.subtle,small{color:var(--muted)}
+section{background:white;border:1px solid var(--line);padding:26px;margin:24px 0;border-radius:8px}
+.cards,.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}.card{border-left:3px solid var(--teal);padding-left:16px}.big{font-size:28px;font-weight:700}
+.scroll{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{text-align:left;border-bottom:1px solid var(--line);padding:11px 12px}th{background:#eef4f6}td.num{text-align:right}
+.ok{color:#08714f;font-weight:700}.failed,.skipped{color:#ad3d24;font-weight:700}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f7f8;padding:16px;border-radius:6px;font-size:12px}
+.barrow{margin:12px 0}.barlabel{display:flex;justify-content:space-between;font-size:12px;gap:12px}.track{background:#edf2f5;height:12px;margin-top:4px;border-radius:3px}.bar{height:12px;background:var(--teal);border-radius:3px}
+.chart{padding:15px;border:1px solid var(--line);border-radius:6px}.notice{padding:16px;background:#fef7e7;border-left:3px solid #c89320}
+code{font-size:12px;overflow-wrap:anywhere}details{margin:12px 0}summary{cursor:pointer;font-weight:600}footer{font-size:12px;color:var(--muted);margin:30px 0}
+@media print{body{background:white}main{padding:0}section{break-inside:avoid}details{display:block}header{print-color-adjust:exact}}
+</style></head><body><main>
+<header><div class="eyebrow">EdgeInferBench / v0.1.1 / measured CPU inference</div>
+<h1>Conversion you can verify.<br>Performance you can reproduce.</h1>
+<p>Technical experiment report · 2026-10-26T20:13:46.981543+00:00</p></header>
+<section><h2>Experiment summary</h2><div class="cards">
+<div class="card"><div class="big">4</div>Benchmark runs</div>
+<div class="card"><div class="big">4 / 4</div>Successful batch measurements</div>
+<div class="card"><div class="big">2</div>Numerical verification records</div></div>
+<p class="subtle">Synthetic FP32 inputs and synchronous CPU inference. All measurements originate from recorded runs; unavailable measurements have no numeric substitute.</p></section>
+<section><h2>Backend and batch comparison</h2><p class="subtle">Only rows in the same comparison group share source weights, input specification, precision, batch, seed, warmup, iterations, requested threads, and recorded environment. Runtime-specific settings are disclosed below. Different groups are separate experiments.</p>
+<div class="scroll"><table><thead><tr><th>Group / model</th><th>Backend</th><th>Batch</th><th>Threads</th><th>Status</th><th>Trials</th><th>P50 ms</th><th>P50 CI95 ms</th><th>Between-trial SD</th><th>P95 ms</th><th>P99 ms</th><th>Samples/s</th><th>RSS MB</th><th>Peak MB</th></tr></thead><tbody>
+<tr><td>a166fb0c / mobilenet_v2</td><td>onnxruntime</td><td>1</td><td>4</td><td class="ok">ok</td>
+<td>5 / 0</td>
+<td class="num">8.117</td>
+<td class="num">7.925–8.514</td><td class="num">0.227</td>
+<td class="num">11.177</td><td class="num">12.121</td><td class="num">121.996</td><td class="num">126.304</td><td class="num">125.194</td></tr>
+<tr><td>a166fb0c / mobilenet_v2</td><td>pytorch</td><td>1</td><td>4</td><td class="ok">ok</td>
+<td>5 / 0</td>
+<td class="num">46.796</td>
+<td class="num">45.011–48.155</td><td class="num">1.130</td>
+<td class="num">61.068</td><td class="num">69.518</td><td class="num">21.153</td><td class="num">725.254</td><td class="num">737.092</td></tr>
+<tr><td>f0e63c19 / resnet50</td><td>onnxruntime</td><td>1</td><td>4</td><td class="ok">ok</td>
+<td>5 / 0</td>
+<td class="num">61.968</td>
+<td class="num">59.625–64.127</td><td class="num">1.593</td>
+<td class="num">72.751</td><td class="num">78.082</td><td class="num">16.692</td><td class="num">340.775</td><td class="num">339.689</td></tr>
+<tr><td>f0e63c19 / resnet50</td><td>pytorch</td><td>1</td><td>4</td><td class="ok">ok</td>
+<td>5 / 0</td>
+<td class="num">156.998</td>
+<td class="num">145.399–179.675</td><td class="num">13.403</td>
+<td class="num">190.610</td><td class="num">220.968</td><td class="num">6.300</td><td class="num">828.998</td><td class="num">828.457</td></tr>
+</tbody></table></div></section>
+<section><h2>mobilenet_v2 · batch 1</h2><p class="subtle">Comparison group a166fb0ce17048b8 · Compare backends within this group.</p>
+<div class="charts"><div class="chart"><h3>P50 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>8.117 ms</strong></div><div class="track"><div class="bar" style="width:17.35%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>46.796 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P95 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>11.177 ms</strong></div><div class="track"><div class="bar" style="width:18.30%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>61.068 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P99 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>12.121 ms</strong></div><div class="track"><div class="bar" style="width:17.44%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>69.518 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>Throughput</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>121.996 samples/s</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>21.153 samples/s</strong></div><div class="track"><div class="bar" style="width:17.34%"></div></div></div>
+</div><div class="chart"><h3>Peak observed process RSS</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>125.194 MB</strong></div><div class="track"><div class="bar" style="width:16.98%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>737.092 MB</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div></div></section><section><h2>resnet50 · batch 1</h2><p class="subtle">Comparison group f0e63c19599bcedf · Compare backends within this group.</p>
+<div class="charts"><div class="chart"><h3>P50 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>61.968 ms</strong></div><div class="track"><div class="bar" style="width:39.47%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>156.998 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P95 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>72.751 ms</strong></div><div class="track"><div class="bar" style="width:38.17%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>190.610 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>P99 latency</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>78.082 ms</strong></div><div class="track"><div class="bar" style="width:35.34%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>220.968 ms</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div><div class="chart"><h3>Throughput</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>16.692 samples/s</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>6.300 samples/s</strong></div><div class="track"><div class="bar" style="width:37.74%"></div></div></div>
+</div><div class="chart"><h3>Peak observed process RSS</h3>
+<div class="barrow"><div class="barlabel"><span>onnxruntime</span><strong>339.689 MB</strong></div><div class="track"><div class="bar" style="width:41.00%"></div></div></div>
+
+<div class="barrow"><div class="barlabel"><span>pytorch</span><strong>828.457 MB</strong></div><div class="track"><div class="bar" style="width:100.00%"></div></div></div>
+</div></div></section>
+<section><h2>Correctness verification</h2><p>Passing means numerical equivalence at the stated tolerances for the tested inputs. It does not establish predictive accuracy. Random weights are used unless the model metadata says otherwise.</p>
+<details><summary class="ok">onnxruntime · PASS · batches [1, 4] · 2 inputs/batch</summary><pre>{
+  "atol": 0.0001,
+  "backend": "onnxruntime",
+  "backend_settings": {
+    "allow_spinning": false,
+    "device": "CPU",
+    "execution_mode": "sequential",
+    "graph_optimization": "all",
+    "inter_op_threads": 1,
+    "intra_op_threads": 4,
+    "precision": "FP32",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "version": "1.31.0"
+  },
+  "batch_sizes": [
+    1,
+    4
+  ],
+  "cases": [
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.6645352591003757e-15,
+          "max_relative_error": 2.6645352591003757e-07,
+          "mean_absolute_error": 4.719107049577787e-16,
+          "mean_relative_error": 4.7191070495777865e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 2.3314683517128287e-15,
+          "max_relative_error": 2.3314683517128287e-07,
+          "mean_absolute_error": 4.549832732791969e-16,
+          "mean_relative_error": 4.5498327327919696e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 1.9984014443252818e-15,
+          "max_relative_error": 1.9984014443252818e-07,
+          "mean_absolute_error": 3.7893207452052713e-16,
+          "mean_relative_error": 3.789320745205271e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 1.9984014443252818e-15,
+          "max_relative_error": 1.9984014443252818e-07,
+          "mean_absolute_error": 3.6223758367870397e-16,
+          "mean_relative_error": 3.6223758367870396e-08,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ]
+    }
+  ],
+  "created_at": "2026-10-26T19:06:20.625208+00:00",
+  "inputs_per_batch": 2,
+  "kind": "validation",
+  "passed": true,
+  "reference": "artifacts/development-mobilenet/artifacts/mobilenet_v2_reference",
+  "rtol": 0.001,
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ccfda110f964aff1decf40354a72711e2e202523493e86ad42aadacae5789147",
+  "target": "artifacts/development-mobilenet/artifacts/mobilenet_v2.onnx"
+}</pre></details>
+<details><summary class="ok">onnxruntime · PASS · batches [1, 4] · 2 inputs/batch</summary><pre>{
+  "atol": 0.0001,
+  "backend": "onnxruntime",
+  "backend_settings": {
+    "allow_spinning": false,
+    "device": "CPU",
+    "execution_mode": "sequential",
+    "graph_optimization": "all",
+    "inter_op_threads": 1,
+    "intra_op_threads": 4,
+    "precision": "FP32",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "version": "1.31.0"
+  },
+  "batch_sizes": [
+    1,
+    4
+  ],
+  "cases": [
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 3.814697265625e-05,
+          "max_relative_error": 0.0005280624584686445,
+          "mean_absolute_error": 7.938627153635025e-06,
+          "mean_relative_error": 3.4552968458827795e-06,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 1,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 3.814697265625e-05,
+          "max_relative_error": 0.0026403230195094726,
+          "mean_absolute_error": 8.053921163082123e-06,
+          "mean_relative_error": 6.019774340176435e-06,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            1,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            1,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          1,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          1,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 0,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 3.0517578125e-05,
+          "max_relative_error": 0.001000250062515629,
+          "mean_absolute_error": 6.197161972522736e-06,
+          "mean_relative_error": 2.1198969892229435e-06,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ]
+    },
+    {
+      "atol": 0.0001,
+      "batch_size": 4,
+      "input_index": 1,
+      "mismatched_output_count": 0,
+      "outputs": [
+        {
+          "allclose_passed": true,
+          "atol": 0.0001,
+          "index": 0,
+          "max_absolute_error": 3.147125244140625e-05,
+          "max_relative_error": 0.0010810031709426347,
+          "mean_absolute_error": 6.165824830532074e-06,
+          "mean_relative_error": 2.408103533936859e-06,
+          "mismatched_elements": 0,
+          "reference_dtype": "float32",
+          "reference_shape": [
+            4,
+            1000
+          ],
+          "rtol": 0.001,
+          "target_dtype": "float32",
+          "target_shape": [
+            4,
+            1000
+          ]
+        }
+      ],
+      "passed": true,
+      "reference_output_count": 1,
+      "reference_shapes": [
+        [
+          4,
+          1000
+        ]
+      ],
+      "relative_error_denominator": "max(abs(reference), 1e-8)",
+      "rtol": 0.001,
+      "target_output_count": 1,
+      "target_shapes": [
+        [
+          4,
+          1000
+        ]
+      ]
+    }
+  ],
+  "created_at": "2026-10-26T19:01:00.872377+00:00",
+  "inputs_per_batch": 2,
+  "kind": "validation",
+  "passed": true,
+  "reference": "artifacts/development-resnet50/artifacts/resnet50_reference",
+  "rtol": 0.001,
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+  "target": "artifacts/development-resnet50/artifacts/resnet50.onnx"
+}</pre></details>
+</section>
+<section><h2>Hardware, model provenance, and reproducibility</h2>
+<details><summary>mobilenet_v2 / onnxruntime / 2026-10-26T20:03:58.569702+00:00</summary>
+<p><strong>AMD Ryzen 7 4800H with Radeon Graphics</strong> · x86_64 · 16 logical CPUs · Python 3.11.16</p>
+<p>Initialization: unavailable · process RSS before adapter loading: unavailable</p>
+<h3>Additional measured statistics</h3><div class="scroll"><table><thead><tr><th>Batch</th><th>Mean ms</th><th>Std ms</th><th>Min ms</th><th>Max ms</th><th>First inference ms</th><th>Artifact MB</th><th>Timed seconds</th><th>Samples processed</th><th>RSS observations</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">8.1970</td><td class="num">1.6175</td><td class="num">5.0826</td><td class="num">12.7298</td><td class="num">9.4883</td><td class="num">14.1379</td><td class="num">1.6394</td><td></td><td>90</td></tr></tbody></table></div>
+<h3>Settings</h3><pre>{
+  "batch_sizes": [
+    1
+  ],
+  "cpu_threads": 4,
+  "measurement_iterations": 200,
+  "random_seed": 42,
+  "timeout_seconds": 1800.0,
+  "trials": 5,
+  "warmup_iterations": 20
+}
+{
+  "allow_spinning": false,
+  "device": "CPU",
+  "execution_mode": "sequential",
+  "graph_optimization": "all",
+  "inter_op_threads": 1,
+  "intra_op_threads": 4,
+  "precision": "FP32",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "version": "1.31.0"
+}</pre><h3>Environment</h3><pre>{
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "cpu_frequency_mhz": {
+    "current_max": 4291.796,
+    "current_min": 2823.514,
+    "sample_count": 16
+  },
+  "distribution": {
+    "ANSI_COLOR": "0;38;2;126;186;228",
+    "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+    "BUILD_ID": "26.05.20261010.6fcc160",
+    "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+    "DEFAULT_HOSTNAME": "nixos",
+    "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+    "HOME_URL": "https://nixos.org/",
+    "ID": "nixos",
+    "ID_LIKE": "",
+    "IMAGE_ID": "",
+    "IMAGE_VERSION": "",
+    "LOGO": "nix-snowflake",
+    "NAME": "NixOS",
+    "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+    "SUPPORT_END": "2026-12-31",
+    "SUPPORT_URL": "https://nixos.org/community.html",
+    "VARIANT": "",
+    "VARIANT_ID": "",
+    "VENDOR_NAME": "NixOS",
+    "VENDOR_URL": "https://nixos.org/",
+    "VERSION": "26.05 (Yarara)",
+    "VERSION_CODENAME": "yarara",
+    "VERSION_ID": "26.05"
+  },
+  "git_commit": null,
+  "git_dirty": null,
+  "governors": [
+    "performance"
+  ],
+  "kernel": "6.18.55",
+  "logical_cpus": 16,
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "system_memory_mb": 24584.884224,
+  "thermal": [
+    {
+      "celsius": 78.0,
+      "path": "/sys/class/thermal/thermal_zone0/temp"
+    }
+  ],
+  "thread_environment": {
+    "KMP_AFFINITY": null,
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "versions": {
+    "edge-infer-bench": "0.1.0",
+    "numpy": "2.4.6",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.31.0",
+    "onnxscript": "0.7.2",
+    "openvino": null,
+    "psutil": "7.2.2",
+    "torch": "2.14.0",
+    "torchvision": "0.29.0"
+  }
+}</pre>
+<h3>Conversion and source model</h3><pre>{
+  "architecture": "mobilenet_v2",
+  "artifact_hashes": {
+    "mobilenet_v2.onnx": "3c97601616f9adf7e2ff9a9c785f131295b5e5b992822963a52c66fdc863f317"
+  },
+  "batch_size": 1,
+  "created_at": "2026-10-26T19:06:01.207404+00:00",
+  "dynamic_batch": true,
+  "exporter": "torch.onnx/dynamo",
+  "format": "onnx",
+  "input_spec": {
+    "channels": 3,
+    "distribution": "standard_normal",
+    "dtype": "float32",
+    "height": 224,
+    "layout": "NCHW",
+    "width": 224
+  },
+  "opset": 18,
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "reference": "mobilenet_v2_reference",
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ccfda110f964aff1decf40354a72711e2e202523493e86ad42aadacae5789147",
+  "torch_version": "2.14.0+cu130",
+  "torchvision_version": "0.29.0+cu130",
+  "trace_batch_size": 2,
+  "validation": {
+    "atol": 0.0001,
+    "backend": "onnxruntime",
+    "backend_settings": {
+      "allow_spinning": false,
+      "device": "CPU",
+      "execution_mode": "sequential",
+      "graph_optimization": "all",
+      "inter_op_threads": 1,
+      "intra_op_threads": 4,
+      "precision": "FP32",
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "version": "1.31.0"
+    },
+    "batch_sizes": [
+      1,
+      4
+    ],
+    "cases": [
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 2.6645352591003757e-15,
+            "max_relative_error": 2.6645352591003757e-07,
+            "mean_absolute_error": 4.719107049577787e-16,
+            "mean_relative_error": 4.7191070495777865e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 2.3314683517128287e-15,
+            "max_relative_error": 2.3314683517128287e-07,
+            "mean_absolute_error": 4.549832732791969e-16,
+            "mean_relative_error": 4.5498327327919696e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 1.9984014443252818e-15,
+            "max_relative_error": 1.9984014443252818e-07,
+            "mean_absolute_error": 3.7893207452052713e-16,
+            "mean_relative_error": 3.789320745205271e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 1.9984014443252818e-15,
+            "max_relative_error": 1.9984014443252818e-07,
+            "mean_absolute_error": 3.6223758367870397e-16,
+            "mean_relative_error": 3.6223758367870396e-08,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            1000
+          ]
+        ]
+      }
+    ],
+    "created_at": "2026-10-26T19:06:20.625208+00:00",
+    "inputs_per_batch": 2,
+    "kind": "validation",
+    "passed": true,
+    "reference": "artifacts/development-mobilenet/artifacts/mobilenet_v2_reference",
+    "rtol": 0.001,
+    "schema_version": 1,
+    "seed": 42,
+    "source_id": "ccfda110f964aff1decf40354a72711e2e202523493e86ad42aadacae5789147",
+    "target": "artifacts/development-mobilenet/artifacts/mobilenet_v2.onnx"
+  },
+  "weights": "random"
+}</pre></details><details><summary>mobilenet_v2 / pytorch / 2026-10-26T20:04:15.901204+00:00</summary>
+<p><strong>AMD Ryzen 7 4800H with Radeon Graphics</strong> · x86_64 · 16 logical CPUs · Python 3.11.16</p>
+<p>Initialization: unavailable · process RSS before adapter loading: unavailable</p>
+<h3>Additional measured statistics</h3><div class="scroll"><table><thead><tr><th>Batch</th><th>Mean ms</th><th>Std ms</th><th>Min ms</th><th>Max ms</th><th>First inference ms</th><th>Artifact MB</th><th>Timed seconds</th><th>Samples processed</th><th>RSS observations</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">47.2745</td><td class="num">7.3604</td><td class="num">34.9268</td><td class="num">73.3273</td><td class="num">68.1200</td><td class="num">14.2436</td><td class="num">9.4549</td><td></td><td>514</td></tr></tbody></table></div>
+<h3>Settings</h3><pre>{
+  "batch_sizes": [
+    1
+  ],
+  "cpu_threads": 4,
+  "measurement_iterations": 200,
+  "random_seed": 42,
+  "timeout_seconds": 1800.0,
+  "trials": 5,
+  "warmup_iterations": 20
+}
+{
+  "deterministic_algorithms": true,
+  "device": "CPU",
+  "inter_op_threads": 1,
+  "intra_op_threads": 4,
+  "mkldnn_enabled": true,
+  "precision": "FP32",
+  "version": "2.14.0+cu130"
+}</pre><h3>Environment</h3><pre>{
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "cpu_frequency_mhz": {
+    "current_max": 3055.054,
+    "current_min": 2827.894,
+    "sample_count": 16
+  },
+  "distribution": {
+    "ANSI_COLOR": "0;38;2;126;186;228",
+    "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+    "BUILD_ID": "26.05.20261010.6fcc160",
+    "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+    "DEFAULT_HOSTNAME": "nixos",
+    "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+    "HOME_URL": "https://nixos.org/",
+    "ID": "nixos",
+    "ID_LIKE": "",
+    "IMAGE_ID": "",
+    "IMAGE_VERSION": "",
+    "LOGO": "nix-snowflake",
+    "NAME": "NixOS",
+    "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+    "SUPPORT_END": "2026-12-31",
+    "SUPPORT_URL": "https://nixos.org/community.html",
+    "VARIANT": "",
+    "VARIANT_ID": "",
+    "VENDOR_NAME": "NixOS",
+    "VENDOR_URL": "https://nixos.org/",
+    "VERSION": "26.05 (Yarara)",
+    "VERSION_CODENAME": "yarara",
+    "VERSION_ID": "26.05"
+  },
+  "git_commit": null,
+  "git_dirty": null,
+  "governors": [
+    "performance"
+  ],
+  "kernel": "6.18.55",
+  "logical_cpus": 16,
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "system_memory_mb": 24584.884224,
+  "thermal": [
+    {
+      "celsius": 69.0,
+      "path": "/sys/class/thermal/thermal_zone0/temp"
+    }
+  ],
+  "thread_environment": {
+    "KMP_AFFINITY": null,
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "versions": {
+    "edge-infer-bench": "0.1.0",
+    "numpy": "2.4.6",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.31.0",
+    "onnxscript": "0.7.2",
+    "openvino": null,
+    "psutil": "7.2.2",
+    "torch": "2.14.0",
+    "torchvision": "0.29.0"
+  }
+}</pre>
+<h3>Conversion and source model</h3><pre>{
+  "architecture": "mobilenet_v2",
+  "created_at": "2026-10-26T19:06:01.207404+00:00",
+  "input_spec": {
+    "channels": 3,
+    "distribution": "standard_normal",
+    "dtype": "float32",
+    "height": 224,
+    "layout": "NCHW",
+    "width": 224
+  },
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ccfda110f964aff1decf40354a72711e2e202523493e86ad42aadacae5789147",
+  "torch_version": "2.14.0+cu130",
+  "torchvision_version": "0.29.0+cu130",
+  "weights": "random"
+}</pre></details><details><summary>resnet50 / onnxruntime / 2026-10-26T19:58:59.890114+00:00</summary>
+<p><strong>AMD Ryzen 7 4800H with Radeon Graphics</strong> · x86_64 · 16 logical CPUs · Python 3.11.16</p>
+<p>Initialization: unavailable · process RSS before adapter loading: unavailable</p>
+<h3>Additional measured statistics</h3><div class="scroll"><table><thead><tr><th>Batch</th><th>Mean ms</th><th>Std ms</th><th>Min ms</th><th>Max ms</th><th>First inference ms</th><th>Artifact MB</th><th>Timed seconds</th><th>Samples processed</th><th>RSS observations</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">59.9082</td><td class="num">8.7139</td><td class="num">39.0992</td><td class="num">83.8774</td><td class="num">50.6327</td><td class="num">102.2472</td><td class="num">11.9816</td><td></td><td>648</td></tr></tbody></table></div>
+<h3>Settings</h3><pre>{
+  "batch_sizes": [
+    1
+  ],
+  "cpu_threads": 4,
+  "measurement_iterations": 200,
+  "random_seed": 42,
+  "timeout_seconds": 1800.0,
+  "trials": 5,
+  "warmup_iterations": 20
+}
+{
+  "allow_spinning": false,
+  "device": "CPU",
+  "execution_mode": "sequential",
+  "graph_optimization": "all",
+  "inter_op_threads": 1,
+  "intra_op_threads": 4,
+  "precision": "FP32",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "version": "1.31.0"
+}</pre><h3>Environment</h3><pre>{
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "cpu_frequency_mhz": {
+    "current_max": 3836.432,
+    "current_min": 1113.175,
+    "sample_count": 16
+  },
+  "distribution": {
+    "ANSI_COLOR": "0;38;2;126;186;228",
+    "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+    "BUILD_ID": "26.05.20261010.6fcc160",
+    "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+    "DEFAULT_HOSTNAME": "nixos",
+    "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+    "HOME_URL": "https://nixos.org/",
+    "ID": "nixos",
+    "ID_LIKE": "",
+    "IMAGE_ID": "",
+    "IMAGE_VERSION": "",
+    "LOGO": "nix-snowflake",
+    "NAME": "NixOS",
+    "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+    "SUPPORT_END": "2026-12-31",
+    "SUPPORT_URL": "https://nixos.org/community.html",
+    "VARIANT": "",
+    "VARIANT_ID": "",
+    "VENDOR_NAME": "NixOS",
+    "VENDOR_URL": "https://nixos.org/",
+    "VERSION": "26.05 (Yarara)",
+    "VERSION_CODENAME": "yarara",
+    "VERSION_ID": "26.05"
+  },
+  "git_commit": null,
+  "git_dirty": null,
+  "governors": [
+    "performance"
+  ],
+  "kernel": "6.18.55",
+  "logical_cpus": 16,
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "system_memory_mb": 24584.884224,
+  "thermal": [
+    {
+      "celsius": 84.0,
+      "path": "/sys/class/thermal/thermal_zone0/temp"
+    }
+  ],
+  "thread_environment": {
+    "KMP_AFFINITY": null,
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "versions": {
+    "edge-infer-bench": "0.1.0",
+    "numpy": "2.4.6",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.31.0",
+    "onnxscript": "0.7.2",
+    "openvino": null,
+    "psutil": "7.2.2",
+    "torch": "2.14.0",
+    "torchvision": "0.29.0"
+  }
+}</pre>
+<h3>Conversion and source model</h3><pre>{
+  "architecture": "resnet50",
+  "artifact_hashes": {
+    "resnet50.onnx": "fe31015da279687de8df17c9620c59b0570aa292fd5b722727b64b9a6f1a3103"
+  },
+  "batch_size": 1,
+  "created_at": "2026-10-26T19:00:40.648755+00:00",
+  "dynamic_batch": true,
+  "exporter": "torch.onnx/dynamo",
+  "format": "onnx",
+  "input_spec": {
+    "channels": 3,
+    "distribution": "standard_normal",
+    "dtype": "float32",
+    "height": 224,
+    "layout": "NCHW",
+    "width": 224
+  },
+  "opset": 18,
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "reference": "resnet50_reference",
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+  "torch_version": "2.14.0+cu130",
+  "torchvision_version": "0.29.0+cu130",
+  "trace_batch_size": 2,
+  "validation": {
+    "atol": 0.0001,
+    "backend": "onnxruntime",
+    "backend_settings": {
+      "allow_spinning": false,
+      "device": "CPU",
+      "execution_mode": "sequential",
+      "graph_optimization": "all",
+      "inter_op_threads": 1,
+      "intra_op_threads": 4,
+      "precision": "FP32",
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "version": "1.31.0"
+    },
+    "batch_sizes": [
+      1,
+      4
+    ],
+    "cases": [
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 3.814697265625e-05,
+            "max_relative_error": 0.0005280624584686445,
+            "mean_absolute_error": 7.938627153635025e-06,
+            "mean_relative_error": 3.4552968458827795e-06,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 1,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 3.814697265625e-05,
+            "max_relative_error": 0.0026403230195094726,
+            "mean_absolute_error": 8.053921163082123e-06,
+            "mean_relative_error": 6.019774340176435e-06,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              1,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              1,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            1,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            1,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 0,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 3.0517578125e-05,
+            "max_relative_error": 0.001000250062515629,
+            "mean_absolute_error": 6.197161972522736e-06,
+            "mean_relative_error": 2.1198969892229435e-06,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            1000
+          ]
+        ]
+      },
+      {
+        "atol": 0.0001,
+        "batch_size": 4,
+        "input_index": 1,
+        "mismatched_output_count": 0,
+        "outputs": [
+          {
+            "allclose_passed": true,
+            "atol": 0.0001,
+            "index": 0,
+            "max_absolute_error": 3.147125244140625e-05,
+            "max_relative_error": 0.0010810031709426347,
+            "mean_absolute_error": 6.165824830532074e-06,
+            "mean_relative_error": 2.408103533936859e-06,
+            "mismatched_elements": 0,
+            "reference_dtype": "float32",
+            "reference_shape": [
+              4,
+              1000
+            ],
+            "rtol": 0.001,
+            "target_dtype": "float32",
+            "target_shape": [
+              4,
+              1000
+            ]
+          }
+        ],
+        "passed": true,
+        "reference_output_count": 1,
+        "reference_shapes": [
+          [
+            4,
+            1000
+          ]
+        ],
+        "relative_error_denominator": "max(abs(reference), 1e-8)",
+        "rtol": 0.001,
+        "target_output_count": 1,
+        "target_shapes": [
+          [
+            4,
+            1000
+          ]
+        ]
+      }
+    ],
+    "created_at": "2026-10-26T19:01:00.872377+00:00",
+    "inputs_per_batch": 2,
+    "kind": "validation",
+    "passed": true,
+    "reference": "artifacts/development-resnet50/artifacts/resnet50_reference",
+    "rtol": 0.001,
+    "schema_version": 1,
+    "seed": 42,
+    "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+    "target": "artifacts/development-resnet50/artifacts/resnet50.onnx"
+  },
+  "weights": "random"
+}</pre></details><details><summary>resnet50 / pytorch / 2026-10-26T20:00:19.557984+00:00</summary>
+<p><strong>AMD Ryzen 7 4800H with Radeon Graphics</strong> · x86_64 · 16 logical CPUs · Python 3.11.16</p>
+<p>Initialization: unavailable · process RSS before adapter loading: unavailable</p>
+<h3>Additional measured statistics</h3><div class="scroll"><table><thead><tr><th>Batch</th><th>Mean ms</th><th>Std ms</th><th>Min ms</th><th>Max ms</th><th>First inference ms</th><th>Artifact MB</th><th>Timed seconds</th><th>Samples processed</th><th>RSS observations</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">158.7365</td><td class="num">20.2568</td><td class="num">118.9937</td><td class="num">260.7848</td><td class="num">203.8325</td><td class="num">102.5246</td><td class="num">31.7473</td><td></td><td>1694</td></tr></tbody></table></div>
+<h3>Settings</h3><pre>{
+  "batch_sizes": [
+    1
+  ],
+  "cpu_threads": 4,
+  "measurement_iterations": 200,
+  "random_seed": 42,
+  "timeout_seconds": 1800.0,
+  "trials": 5,
+  "warmup_iterations": 20
+}
+{
+  "deterministic_algorithms": true,
+  "device": "CPU",
+  "inter_op_threads": 1,
+  "intra_op_threads": 4,
+  "mkldnn_enabled": true,
+  "precision": "FP32",
+  "version": "2.14.0+cu130"
+}</pre><h3>Environment</h3><pre>{
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "cpu_frequency_mhz": {
+    "current_max": 4266.835,
+    "current_min": 2844.314,
+    "sample_count": 16
+  },
+  "distribution": {
+    "ANSI_COLOR": "0;38;2;126;186;228",
+    "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+    "BUILD_ID": "26.05.20261010.6fcc160",
+    "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+    "DEFAULT_HOSTNAME": "nixos",
+    "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+    "HOME_URL": "https://nixos.org/",
+    "ID": "nixos",
+    "ID_LIKE": "",
+    "IMAGE_ID": "",
+    "IMAGE_VERSION": "",
+    "LOGO": "nix-snowflake",
+    "NAME": "NixOS",
+    "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+    "SUPPORT_END": "2026-12-31",
+    "SUPPORT_URL": "https://nixos.org/community.html",
+    "VARIANT": "",
+    "VARIANT_ID": "",
+    "VENDOR_NAME": "NixOS",
+    "VENDOR_URL": "https://nixos.org/",
+    "VERSION": "26.05 (Yarara)",
+    "VERSION_CODENAME": "yarara",
+    "VERSION_ID": "26.05"
+  },
+  "git_commit": null,
+  "git_dirty": null,
+  "governors": [
+    "performance"
+  ],
+  "kernel": "6.18.55",
+  "logical_cpus": 16,
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "system_memory_mb": 24584.884224,
+  "thermal": [
+    {
+      "celsius": 72.0,
+      "path": "/sys/class/thermal/thermal_zone0/temp"
+    }
+  ],
+  "thread_environment": {
+    "KMP_AFFINITY": null,
+    "MKL_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "versions": {
+    "edge-infer-bench": "0.1.0",
+    "numpy": "2.4.6",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.31.0",
+    "onnxscript": "0.7.2",
+    "openvino": null,
+    "psutil": "7.2.2",
+    "torch": "2.14.0",
+    "torchvision": "0.29.0"
+  }
+}</pre>
+<h3>Conversion and source model</h3><pre>{
+  "architecture": "resnet50",
+  "created_at": "2026-10-26T19:00:40.648755+00:00",
+  "input_spec": {
+    "channels": 3,
+    "distribution": "standard_normal",
+    "dtype": "float32",
+    "height": 224,
+    "layout": "NCHW",
+    "width": 224
+  },
+  "precision": "FP32",
+  "preprocessing": {
+    "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+    "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+  "torch_version": "2.14.0+cu130",
+  "torchvision_version": "0.29.0+cu130",
+  "weights": "random"
+}</pre></details></section>
+<section><h2>Batch-size analysis and interpretation</h2><p>Compare each batch's per-request latency with its samples/second. Larger batches can increase throughput while increasing request latency and RSS. Charts use separate scales for each group; bar lengths across groups do not encode a shared scale. Read the numeric values when assessing batch scaling.</p>
+<h2>Limitations and methodology</h2><ul>
+<li>Model loading, compilation, input generation, and serialization are excluded from steady-state timing. A first inference is timed separately before the configured warmup. Timed inference includes synchronous output normalization into host arrays.</li>
+<li>P50/P95/P99 use NumPy linear percentiles; standard deviation is the population statistic. Throughput is processed samples divided by the sum of timed inference durations.</li>
+<li>RSS is total process resident memory in decimal MB, including libraries and allocators. It is not model-exclusive memory. RSS is sampled every 20 ms during warmup/measurement; observed peaks can miss shorter allocations. Earlier batches can retain allocations.</li>
+<li>Backend graph optimizations and thread schedulers differ. A matching requested thread count does not guarantee identical resource use. Check effective backend settings. No universal backend speed claim follows from this report.</li>
+<li>Thermal state, CPU boost, power policy, background load, process affinity, and run order affect measurements. Repeat runs in fresh processes on an otherwise idle machine.</li>
+<li>Microbenchmarks are not end-to-end application performance. AMD OpenVINO compatibility is established only when actual CPU compilation, inference, and numerical checks succeed.</li>
+</ul></section><footer>Generated offline by edge-infer-bench · MIT licensed · No external scripts, fonts, or chart services.</footer>
+</main></body></html>

@@ -1,0 +1,1762 @@
+{
+  "aggregation": {
+    "bootstrap_samples": 4000,
+    "confidence_interval": "percentile bootstrap over independent trials; exploratory for n<10",
+    "failed_trial_count": 0,
+    "statistic": "median of independent trial-level summaries",
+    "successful_trial_count": 3
+  },
+  "backend": "onnxruntime",
+  "backend_settings": {
+    "allow_spinning": false,
+    "device": "CPU",
+    "execution_mode": "sequential",
+    "graph_optimization": "all",
+    "inter_op_threads": 1,
+    "intra_op_threads": 2,
+    "precision": "FP32",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "version": "1.31.1"
+  },
+  "completed_trials": 3,
+  "config": {
+    "batch_sizes": [
+      1
+    ],
+    "cpu_threads": 2,
+    "measurement_iterations": 30,
+    "random_seed": 42,
+    "timeout_seconds": 1800.0,
+    "trials": 3,
+    "warmup_iterations": 5
+  },
+  "created_at": "2026-10-26T19:54:00.252589+00:00",
+  "environment": {
+    "architecture": "x86_64",
+    "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "cpu_frequency_mhz": {
+      "current_max": 4291.81,
+      "current_min": 1113.175,
+      "sample_count": 16
+    },
+    "distribution": {
+      "ANSI_COLOR": "0;38;2;126;186;228",
+      "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+      "BUILD_ID": "26.05.20261010.6fcc160",
+      "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+      "DEFAULT_HOSTNAME": "nixos",
+      "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+      "HOME_URL": "https://nixos.org/",
+      "ID": "nixos",
+      "ID_LIKE": "",
+      "IMAGE_ID": "",
+      "IMAGE_VERSION": "",
+      "LOGO": "nix-snowflake",
+      "NAME": "NixOS",
+      "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+      "SUPPORT_END": "2026-12-31",
+      "SUPPORT_URL": "https://nixos.org/community.html",
+      "VARIANT": "",
+      "VARIANT_ID": "",
+      "VENDOR_NAME": "NixOS",
+      "VENDOR_URL": "https://nixos.org/",
+      "VERSION": "26.05 (Yarara)",
+      "VERSION_CODENAME": "yarara",
+      "VERSION_ID": "26.05"
+    },
+    "git_commit": null,
+    "git_dirty": null,
+    "governors": [
+      "performance"
+    ],
+    "kernel": "6.18.55",
+    "logical_cpus": 16,
+    "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+    "physical_cpus": 8,
+    "python": "3.11.16",
+    "system_memory_mb": 24584.884224,
+    "thermal": [
+      {
+        "celsius": 78.0,
+        "path": "/sys/class/thermal/thermal_zone0/temp"
+      }
+    ],
+    "thread_environment": {
+      "KMP_AFFINITY": null,
+      "MKL_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null
+    },
+    "versions": {
+      "edge-infer-bench": "0.1.1",
+      "numpy": "2.4.6",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.31.1",
+      "onnxscript": "0.7.2",
+      "openvino": null,
+      "psutil": "7.2.2",
+      "torch": "2.14.1+cpu",
+      "torchvision": "0.29.1+cpu"
+    }
+  },
+  "execution_order": [
+    0,
+    1,
+    2
+  ],
+  "failed_trials": 0,
+  "kind": "benchmark",
+  "model": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx",
+  "model_metadata": {
+    "architecture": "tiny",
+    "artifact_hashes": {
+      "tiny.onnx": "a81d45b7f6a49bf04ca3e1966307a9820f1daa63addfbc1dc3023fe68cc41246"
+    },
+    "batch_size": 1,
+    "created_at": "2026-10-26T19:53:48.566840+00:00",
+    "dynamic_batch": true,
+    "exporter": "torch.onnx/dynamo",
+    "format": "onnx",
+    "input_spec": {
+      "channels": 3,
+      "distribution": "standard_normal",
+      "dtype": "float32",
+      "height": 8,
+      "layout": "NCHW",
+      "width": 8
+    },
+    "opset": 18,
+    "precision": "FP32",
+    "preprocessing": {
+      "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+      "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+    },
+    "reference": "tiny_reference",
+    "schema_version": 1,
+    "seed": 7,
+    "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+    "torch_version": "2.14.1+cpu",
+    "torchvision_version": "0.29.1+cpu",
+    "trace_batch_size": 2,
+    "validation": {
+      "atol": 0.0001,
+      "backend": "onnxruntime",
+      "backend_settings": {
+        "allow_spinning": false,
+        "device": "CPU",
+        "execution_mode": "sequential",
+        "graph_optimization": "all",
+        "inter_op_threads": 1,
+        "intra_op_threads": 2,
+        "precision": "FP32",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "version": "1.31.1"
+      },
+      "batch_sizes": [
+        1,
+        4
+      ],
+      "cases": [
+        {
+          "atol": 0.0001,
+          "batch_size": 1,
+          "input_index": 0,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 1.4901161193847656e-08,
+              "max_relative_error": 3.6356708758040284e-07,
+              "mean_absolute_error": 2.9802322387695314e-09,
+              "mean_relative_error": 7.271341751608057e-08,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                1,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                1,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              1,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 1,
+          "input_index": 1,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 0.0,
+              "max_relative_error": 0.0,
+              "mean_absolute_error": 0.0,
+              "mean_relative_error": 0.0,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                1,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                1,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              1,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 4,
+          "input_index": 0,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 2.9802322387695312e-08,
+              "max_relative_error": 1.0065202381024276e-06,
+              "mean_absolute_error": 4.470348358154297e-09,
+              "mean_relative_error": 9.273090569466891e-08,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                4,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                4,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              4,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              4,
+              5
+            ]
+          ]
+        },
+        {
+          "atol": 0.0001,
+          "batch_size": 4,
+          "input_index": 1,
+          "mismatched_output_count": 0,
+          "outputs": [
+            {
+              "allclose_passed": true,
+              "atol": 0.0001,
+              "index": 0,
+              "max_absolute_error": 2.9802322387695312e-08,
+              "max_relative_error": 3.990996312319407e-06,
+              "mean_absolute_error": 2.9802322387695314e-09,
+              "mean_relative_error": 2.2629224164037716e-07,
+              "mismatched_elements": 0,
+              "reference_dtype": "float32",
+              "reference_shape": [
+                4,
+                5
+              ],
+              "rtol": 0.001,
+              "target_dtype": "float32",
+              "target_shape": [
+                4,
+                5
+              ]
+            }
+          ],
+          "passed": true,
+          "reference_output_count": 1,
+          "reference_shapes": [
+            [
+              4,
+              5
+            ]
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "rtol": 0.001,
+          "target_output_count": 1,
+          "target_shapes": [
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      ],
+      "created_at": "2026-10-26T19:53:53.761483+00:00",
+      "inputs_per_batch": 2,
+      "kind": "validation",
+      "passed": true,
+      "reference": "/tmp/edgebench-v011-smoke-1793044416/tiny_reference",
+      "rtol": 0.001,
+      "schema_version": 1,
+      "seed": 7,
+      "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+      "target": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx"
+    },
+    "weights": "random"
+  },
+  "results": [
+    {
+      "baseline_rss_mb": 38.936576,
+      "batch_size": 1,
+      "between_trial_p50_std_ms": 0.007983717195016365,
+      "between_trial_throughput_std_samples_s": 3581.975616900231,
+      "completed_trials": 3,
+      "failed_trials": 0,
+      "first_inference_ms": 0.831814,
+      "incremental_rss_mb": 43.343872,
+      "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+      "max_ms": 0.068235,
+      "mean_ms": 0.034774099999999995,
+      "measured_duration_s": 0.001043223,
+      "memory_samples": 2,
+      "min_ms": 0.028355,
+      "model_artifact_mb": 0.006961,
+      "p50_ci95_ms": [
+        0.023781,
+        0.0396355
+      ],
+      "p50_ms": 0.0300665,
+      "p95_ms": 0.053582499999999984,
+      "p99_ms": 0.06780986,
+      "peak_incremental_rss_mb": 47.149055999999995,
+      "peak_observed_rss_mb": 86.065152,
+      "rss_after_benchmark_mb": 87.896064,
+      "rss_after_initialization_mb": 82.272256,
+      "rss_mb": 87.896064,
+      "status": "ok",
+      "std_ms": 0.00945800134894612,
+      "throughput_ci95_samples_s": [
+        23955.251590029824,
+        30960.35938785177
+      ],
+      "throughput_samples_s": 28757.034689610944,
+      "trial_duration_s": 0.19856009597424418,
+      "trial_p50_ms": [
+        0.023781,
+        0.0396355,
+        0.0300665
+      ],
+      "trial_throughput_samples_s": [
+        30960.35938785177,
+        23955.251590029824,
+        28757.034689610944
+      ]
+    }
+  ],
+  "schema_version": 2,
+  "status": "ok",
+  "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+  "tool_version": "0.1.1",
+  "trial_count": 3,
+  "trials": [
+    {
+      "backend": "onnxruntime",
+      "backend_settings": {
+        "allow_spinning": false,
+        "device": "CPU",
+        "execution_mode": "sequential",
+        "graph_optimization": "all",
+        "inter_op_threads": 1,
+        "intra_op_threads": 2,
+        "precision": "FP32",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "version": "1.31.1"
+      },
+      "baseline_before_load_rss_mb": 38.936576,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:54:00.684778+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 4291.81,
+          "current_min": 1113.175,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 78.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": null,
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 21.167957,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.onnx": "a81d45b7f6a49bf04ca3e1966307a9820f1daa63addfbc1dc3023fe68cc41246"
+        },
+        "batch_size": 1,
+        "created_at": "2026-10-26T19:53:48.566840+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "onnx",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 7,
+        "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "onnxruntime",
+          "backend_settings": {
+            "allow_spinning": false,
+            "device": "CPU",
+            "execution_mode": "sequential",
+            "graph_optimization": "all",
+            "inter_op_threads": 1,
+            "intra_op_threads": 2,
+            "precision": "FP32",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "version": "1.31.1"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 3.6356708758040284e-07,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 7.271341751608057e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 0.0,
+                  "max_relative_error": 0.0,
+                  "mean_absolute_error": 0.0,
+                  "mean_relative_error": 0.0,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.0065202381024276e-06,
+                  "mean_absolute_error": 4.470348358154297e-09,
+                  "mean_relative_error": 9.273090569466891e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.990996312319407e-06,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 2.2629224164037716e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:53:53.761483+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-smoke-1793044416/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 7,
+          "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+          "target": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3766221,
+      "python_executable": "/tmp/edgebench-cpu311-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 38.936576,
+          "batch_size": 1,
+          "first_inference_ms": 0.647502,
+          "incremental_rss_mb": 43.352064,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            23327,
+            26331,
+            24235,
+            22210,
+            21372,
+            22070,
+            21931,
+            21372,
+            21441,
+            21511,
+            21581,
+            44628,
+            34013,
+            22977,
+            20953,
+            22279,
+            21581,
+            45746,
+            43860,
+            35689,
+            35759,
+            40089,
+            130324,
+            42743,
+            22070,
+            21231,
+            25003,
+            36807,
+            38692,
+            37156
+          ],
+          "max_ms": 0.130324,
+          "mean_ms": 0.03229936666666667,
+          "measured_duration_s": 0.000968981,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.020953,
+          "model_artifact_mb": 0.006961,
+          "p50_ms": 0.023781,
+          "p95_ms": 0.045242899999999996,
+          "p99_ms": 0.10579638000000008,
+          "peak_incremental_rss_mb": 47.194112000000004,
+          "peak_observed_rss_mb": 86.130688,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 97.652736,
+          "rss_after_initialization_mb": 82.28864,
+          "rss_mb": 97.652736,
+          "status": "ok",
+          "std_ms": 0.020125117035656934,
+          "throughput_samples_s": 30960.35938785177
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.22271050204290077,
+      "trial_index": 0
+    },
+    {
+      "backend": "onnxruntime",
+      "backend_settings": {
+        "allow_spinning": false,
+        "device": "CPU",
+        "execution_mode": "sequential",
+        "graph_optimization": "all",
+        "inter_op_threads": 1,
+        "intra_op_threads": 2,
+        "precision": "FP32",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "version": "1.31.1"
+      },
+      "baseline_before_load_rss_mb": 38.916096,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:54:01.252170+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 4291.809,
+          "current_min": 1113.175,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 78.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": null,
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 28.7133,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.onnx": "a81d45b7f6a49bf04ca3e1966307a9820f1daa63addfbc1dc3023fe68cc41246"
+        },
+        "batch_size": 1,
+        "created_at": "2026-10-26T19:53:48.566840+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "onnx",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 7,
+        "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "onnxruntime",
+          "backend_settings": {
+            "allow_spinning": false,
+            "device": "CPU",
+            "execution_mode": "sequential",
+            "graph_optimization": "all",
+            "inter_op_threads": 1,
+            "intra_op_threads": 2,
+            "precision": "FP32",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "version": "1.31.1"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 3.6356708758040284e-07,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 7.271341751608057e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 0.0,
+                  "max_relative_error": 0.0,
+                  "mean_absolute_error": 0.0,
+                  "mean_relative_error": 0.0,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.0065202381024276e-06,
+                  "mean_absolute_error": 4.470348358154297e-09,
+                  "mean_relative_error": 9.273090569466891e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.990996312319407e-06,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 2.2629224164037716e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:53:53.761483+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-smoke-1793044416/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 7,
+          "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+          "target": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3766242,
+      "python_executable": "/tmp/edgebench-cpu311-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 38.916096,
+          "batch_size": 1,
+          "first_inference_ms": 0.949776,
+          "incremental_rss_mb": 43.343872,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            37296,
+            39531,
+            34292,
+            33594,
+            30521,
+            31010,
+            31918,
+            39740,
+            44629,
+            54267,
+            44070,
+            44978,
+            66769,
+            49028,
+            41346,
+            39880,
+            35690,
+            38623,
+            38762,
+            39880,
+            44908,
+            61042,
+            68235,
+            38133,
+            33384,
+            36318,
+            34153,
+            37924,
+            42464,
+            39950
+          ],
+          "max_ms": 0.068235,
+          "mean_ms": 0.041744500000000004,
+          "measured_duration_s": 0.001252335,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.030521,
+          "model_artifact_mb": 0.006961,
+          "p50_ms": 0.0396355,
+          "p95_ms": 0.06419184999999998,
+          "p99_ms": 0.06780986,
+          "peak_incremental_rss_mb": 47.149055999999995,
+          "peak_observed_rss_mb": 86.065152,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 87.896064,
+          "rss_after_initialization_mb": 82.259968,
+          "rss_mb": 87.896064,
+          "status": "ok",
+          "std_ms": 0.00945800134894612,
+          "throughput_samples_s": 23955.251590029824
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.19856009597424418,
+      "trial_index": 1
+    },
+    {
+      "backend": "onnxruntime",
+      "backend_settings": {
+        "allow_spinning": false,
+        "device": "CPU",
+        "execution_mode": "sequential",
+        "graph_optimization": "all",
+        "inter_op_threads": 1,
+        "intra_op_threads": 2,
+        "precision": "FP32",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "version": "1.31.1"
+      },
+      "baseline_before_load_rss_mb": 38.940672,
+      "config": {
+        "batch_sizes": [
+          1
+        ],
+        "cpu_threads": 2,
+        "measurement_iterations": 30,
+        "random_seed": 42,
+        "timeout_seconds": 1800.0,
+        "trials": 1,
+        "warmup_iterations": 5
+      },
+      "created_at": "2026-10-26T19:54:01.743929+00:00",
+      "environment": {
+        "architecture": "x86_64",
+        "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "cpu_frequency_mhz": {
+          "current_max": 4291.767,
+          "current_min": 1113.175,
+          "sample_count": 16
+        },
+        "distribution": {
+          "ANSI_COLOR": "0;38;2;126;186;228",
+          "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+          "BUILD_ID": "26.05.20261010.6fcc160",
+          "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+          "DEFAULT_HOSTNAME": "nixos",
+          "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+          "HOME_URL": "https://nixos.org/",
+          "ID": "nixos",
+          "ID_LIKE": "",
+          "IMAGE_ID": "",
+          "IMAGE_VERSION": "",
+          "LOGO": "nix-snowflake",
+          "NAME": "NixOS",
+          "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+          "SUPPORT_END": "2026-12-31",
+          "SUPPORT_URL": "https://nixos.org/community.html",
+          "VARIANT": "",
+          "VARIANT_ID": "",
+          "VENDOR_NAME": "NixOS",
+          "VENDOR_URL": "https://nixos.org/",
+          "VERSION": "26.05 (Yarara)",
+          "VERSION_CODENAME": "yarara",
+          "VERSION_ID": "26.05"
+        },
+        "git_commit": null,
+        "git_dirty": null,
+        "governors": [
+          "performance"
+        ],
+        "kernel": "6.18.55",
+        "logical_cpus": 16,
+        "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+        "physical_cpus": 8,
+        "python": "3.11.16",
+        "system_memory_mb": 24584.884224,
+        "thermal": [
+          {
+            "celsius": 77.0,
+            "path": "/sys/class/thermal/thermal_zone0/temp"
+          }
+        ],
+        "thread_environment": {
+          "KMP_AFFINITY": null,
+          "MKL_NUM_THREADS": null,
+          "OMP_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null
+        },
+        "versions": {
+          "edge-infer-bench": "0.1.1",
+          "numpy": "2.4.6",
+          "onnx": "1.23.2",
+          "onnxruntime": "1.31.1",
+          "onnxscript": "0.7.2",
+          "openvino": null,
+          "psutil": "7.2.2",
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu"
+        }
+      },
+      "initialization_ms": 24.603188,
+      "kind": "benchmark_trial",
+      "model": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx",
+      "model_metadata": {
+        "architecture": "tiny",
+        "artifact_hashes": {
+          "tiny.onnx": "a81d45b7f6a49bf04ca3e1966307a9820f1daa63addfbc1dc3023fe68cc41246"
+        },
+        "batch_size": 1,
+        "created_at": "2026-10-26T19:53:48.566840+00:00",
+        "dynamic_batch": true,
+        "exporter": "torch.onnx/dynamo",
+        "format": "onnx",
+        "input_spec": {
+          "channels": 3,
+          "distribution": "standard_normal",
+          "dtype": "float32",
+          "height": 8,
+          "layout": "NCHW",
+          "width": 8
+        },
+        "opset": 18,
+        "precision": "FP32",
+        "preprocessing": {
+          "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+          "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+        },
+        "reference": "tiny_reference",
+        "schema_version": 1,
+        "seed": 7,
+        "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+        "torch_version": "2.14.1+cpu",
+        "torchvision_version": "0.29.1+cpu",
+        "trace_batch_size": 2,
+        "validation": {
+          "atol": 0.0001,
+          "backend": "onnxruntime",
+          "backend_settings": {
+            "allow_spinning": false,
+            "device": "CPU",
+            "execution_mode": "sequential",
+            "graph_optimization": "all",
+            "inter_op_threads": 1,
+            "intra_op_threads": 2,
+            "precision": "FP32",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "version": "1.31.1"
+          },
+          "batch_sizes": [
+            1,
+            4
+          ],
+          "cases": [
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 1.4901161193847656e-08,
+                  "max_relative_error": 3.6356708758040284e-07,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 7.271341751608057e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 1,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 0.0,
+                  "max_relative_error": 0.0,
+                  "mean_absolute_error": 0.0,
+                  "mean_relative_error": 0.0,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    1,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    1,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  1,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 0,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 1.0065202381024276e-06,
+                  "mean_absolute_error": 4.470348358154297e-09,
+                  "mean_relative_error": 9.273090569466891e-08,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            },
+            {
+              "atol": 0.0001,
+              "batch_size": 4,
+              "input_index": 1,
+              "mismatched_output_count": 0,
+              "outputs": [
+                {
+                  "allclose_passed": true,
+                  "atol": 0.0001,
+                  "index": 0,
+                  "max_absolute_error": 2.9802322387695312e-08,
+                  "max_relative_error": 3.990996312319407e-06,
+                  "mean_absolute_error": 2.9802322387695314e-09,
+                  "mean_relative_error": 2.2629224164037716e-07,
+                  "mismatched_elements": 0,
+                  "reference_dtype": "float32",
+                  "reference_shape": [
+                    4,
+                    5
+                  ],
+                  "rtol": 0.001,
+                  "target_dtype": "float32",
+                  "target_shape": [
+                    4,
+                    5
+                  ]
+                }
+              ],
+              "passed": true,
+              "reference_output_count": 1,
+              "reference_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "relative_error_denominator": "max(abs(reference), 1e-8)",
+              "rtol": 0.001,
+              "target_output_count": 1,
+              "target_shapes": [
+                [
+                  4,
+                  5
+                ]
+              ]
+            }
+          ],
+          "created_at": "2026-10-26T19:53:53.761483+00:00",
+          "inputs_per_batch": 2,
+          "kind": "validation",
+          "passed": true,
+          "reference": "/tmp/edgebench-v011-smoke-1793044416/tiny_reference",
+          "rtol": 0.001,
+          "schema_version": 1,
+          "seed": 7,
+          "source_id": "c2215bc237edd0ff45b8d8b898da7c1bafbfe5023a4a48a939111a6433103be5",
+          "target": "/tmp/edgebench-v011-smoke-1793044416/tiny.onnx"
+        },
+        "weights": "random"
+      },
+      "process_pid": 3766292,
+      "python_executable": "/tmp/edgebench-cpu311-v011/bin/python",
+      "results": [
+        {
+          "baseline_rss_mb": 38.940672,
+          "batch_size": 1,
+          "first_inference_ms": 0.831814,
+          "incremental_rss_mb": 43.331584,
+          "input_sha256": "4675006888b50ceed7228c2dafcbd4f9683f58632c3bdd70ddb25c85497ae975",
+          "input_shape": [
+            1,
+            3,
+            8,
+            8
+          ],
+          "latencies_ns": [
+            55594,
+            39042,
+            49098,
+            51124,
+            44629,
+            64604,
+            33384,
+            31428,
+            30521,
+            29543,
+            30032,
+            30521,
+            44210,
+            30870,
+            29543,
+            29054,
+            29543,
+            29613,
+            29054,
+            30032,
+            29264,
+            35060,
+            30101,
+            29543,
+            30032,
+            29124,
+            29543,
+            30032,
+            30730,
+            28355
+          ],
+          "max_ms": 0.064604,
+          "mean_ms": 0.034774099999999995,
+          "measured_duration_s": 0.001043223,
+          "memory_sample_interval_ms": 20,
+          "memory_samples": 2,
+          "min_ms": 0.028355,
+          "model_artifact_mb": 0.006961,
+          "p50_ms": 0.0300665,
+          "p95_ms": 0.053582499999999984,
+          "p99_ms": 0.0619911,
+          "peak_incremental_rss_mb": 47.091711999999994,
+          "peak_observed_rss_mb": 86.032384,
+          "processed_samples": 30,
+          "rss_after_benchmark_mb": 87.863296,
+          "rss_after_initialization_mb": 82.272256,
+          "rss_mb": 87.863296,
+          "status": "ok",
+          "std_ms": 0.009174812213700435,
+          "throughput_samples_s": 28757.034689610944
+        }
+      ],
+      "schema_version": 2,
+      "status": "ok",
+      "timing_scope": "synchronous infer + output normalization; prepared host input; no loading",
+      "tool_version": "0.1.1",
+      "trial_duration_s": 0.17572243401082233,
+      "trial_index": 2
+    }
+  ]
+}

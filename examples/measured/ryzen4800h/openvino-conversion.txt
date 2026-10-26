@@ -1,0 +1,2 @@
+Error: OpenVINO unavailable: No module named 'openvino'; install 
+edge-infer-bench[openvino]. AMD CPU support is not assumed.

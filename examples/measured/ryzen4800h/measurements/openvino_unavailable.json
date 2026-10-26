@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "kind": "benchmark",
+  "created_at": "2026-10-26T19:07:08.324574+00:00",
+  "tool_version": "0.1.0",
+  "backend": "openvino",
+  "model": "artifacts/development-resnet50/artifacts/resnet50.onnx",
+  "model_metadata": {
+    "schema_version": 1,
+    "architecture": "resnet50",
+    "seed": 42,
+    "weights": "random",
+    "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+    "input_spec": {
+      "channels": 3,
+      "height": 224,
+      "width": 224,
+      "dtype": "float32",
+      "layout": "NCHW",
+      "distribution": "standard_normal"
+    },
+    "torch_version": "2.14.0+cu130",
+    "torchvision_version": "0.29.0+cu130",
+    "created_at": "2026-10-26T19:00:40.648755+00:00",
+    "precision": "FP32",
+    "preprocessing": {
+      "benchmark": "Synthetic standard-normal NCHW input; no image preprocessing timed",
+      "pretrained_accuracy": "Use torchvision DEFAULT weights.transforms() for real images"
+    },
+    "format": "onnx",
+    "dynamic_batch": true,
+    "batch_size": 1,
+    "trace_batch_size": 2,
+    "opset": 18,
+    "exporter": "torch.onnx/dynamo",
+    "reference": "resnet50_reference",
+    "artifact_hashes": {
+      "resnet50.onnx": "fe31015da279687de8df17c9620c59b0570aa292fd5b722727b64b9a6f1a3103"
+    },
+    "validation": {
+      "schema_version": 1,
+      "kind": "validation",
+      "created_at": "2026-10-26T19:01:00.872377+00:00",
+      "passed": true,
+      "backend": "onnxruntime",
+      "source_id": "ab3432ba7e12bce1bd7ea0053780b785bf345e4a023557bdfd482c325bfb87b3",
+      "reference": "artifacts/development-resnet50/artifacts/resnet50_reference",
+      "target": "artifacts/development-resnet50/artifacts/resnet50.onnx",
+      "seed": 42,
+      "batch_sizes": [
+        1,
+        4
+      ],
+      "inputs_per_batch": 2,
+      "atol": 0.0001,
+      "rtol": 0.001,
+      "backend_settings": {
+        "version": "1.31.0",
+        "device": "CPU",
+        "precision": "FP32",
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "intra_op_threads": 4,
+        "inter_op_threads": 1,
+        "execution_mode": "sequential",
+        "graph_optimization": "all",
+        "allow_spinning": false
+      },
+      "cases": [
+        {
+          "batch_size": 1,
+          "input_index": 0,
+          "passed": true,
+          "reference_output_count": 1,
+          "target_output_count": 1,
+          "mismatched_output_count": 0,
+          "reference_shapes": [
+            [
+              1,
+              1000
+            ]
+          ],
+          "target_shapes": [
+            [
+              1,
+              1000
+            ]
+          ],
+          "outputs": [
+            {
+              "index": 0,
+              "reference_shape": [
+                1,
+                1000
+              ],
+              "target_shape": [
+                1,
+                1000
+              ],
+              "reference_dtype": "float32",
+              "target_dtype": "float32",
+              "atol": 0.0001,
+              "rtol": 0.001,
+              "allclose_passed": true,
+              "max_absolute_error": 3.814697265625e-05,
+              "mean_absolute_error": 7.938627153635025e-06,
+              "max_relative_error": 0.0005280624584686445,
+              "mean_relative_error": 3.4552968458827795e-06,
+              "mismatched_elements": 0
+            }
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "atol": 0.0001,
+          "rtol": 0.001
+        },
+        {
+          "batch_size": 1,
+          "input_index": 1,
+          "passed": true,
+          "reference_output_count": 1,
+          "target_output_count": 1,
+          "mismatched_output_count": 0,
+          "reference_shapes": [
+            [
+              1,
+              1000
+            ]
+          ],
+          "target_shapes": [
+            [
+              1,
+              1000
+            ]
+          ],
+          "outputs": [
+            {
+              "index": 0,
+              "reference_shape": [
+                1,
+                1000
+              ],
+              "target_shape": [
+                1,
+                1000
+              ],
+              "reference_dtype": "float32",
+              "target_dtype": "float32",
+              "atol": 0.0001,
+              "rtol": 0.001,
+              "allclose_passed": true,
+              "max_absolute_error": 3.814697265625e-05,
+              "mean_absolute_error": 8.053921163082123e-06,
+              "max_relative_error": 0.0026403230195094726,
+              "mean_relative_error": 6.019774340176435e-06,
+              "mismatched_elements": 0
+            }
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "atol": 0.0001,
+          "rtol": 0.001
+        },
+        {
+          "batch_size": 4,
+          "input_index": 0,
+          "passed": true,
+          "reference_output_count": 1,
+          "target_output_count": 1,
+          "mismatched_output_count": 0,
+          "reference_shapes": [
+            [
+              4,
+              1000
+            ]
+          ],
+          "target_shapes": [
+            [
+              4,
+              1000
+            ]
+          ],
+          "outputs": [
+            {
+              "index": 0,
+              "reference_shape": [
+                4,
+                1000
+              ],
+              "target_shape": [
+                4,
+                1000
+              ],
+              "reference_dtype": "float32",
+              "target_dtype": "float32",
+              "atol": 0.0001,
+              "rtol": 0.001,
+              "allclose_passed": true,
+              "max_absolute_error": 3.0517578125e-05,
+              "mean_absolute_error": 6.197161972522736e-06,
+              "max_relative_error": 0.001000250062515629,
+              "mean_relative_error": 2.1198969892229435e-06,
+              "mismatched_elements": 0
+            }
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "atol": 0.0001,
+          "rtol": 0.001
+        },
+        {
+          "batch_size": 4,
+          "input_index": 1,
+          "passed": true,
+          "reference_output_count": 1,
+          "target_output_count": 1,
+          "mismatched_output_count": 0,
+          "reference_shapes": [
+            [
+              4,
+              1000
+            ]
+          ],
+          "target_shapes": [
+            [
+              4,
+              1000
+            ]
+          ],
+          "outputs": [
+            {
+              "index": 0,
+              "reference_shape": [
+                4,
+                1000
+              ],
+              "target_shape": [
+                4,
+                1000
+              ],
+              "reference_dtype": "float32",
+              "target_dtype": "float32",
+              "atol": 0.0001,
+              "rtol": 0.001,
+              "allclose_passed": true,
+              "max_absolute_error": 3.147125244140625e-05,
+              "mean_absolute_error": 6.165824830532074e-06,
+              "max_relative_error": 0.0010810031709426347,
+              "mean_relative_error": 2.408103533936859e-06,
+              "mismatched_elements": 0
+            }
+          ],
+          "relative_error_denominator": "max(abs(reference), 1e-8)",
+          "atol": 0.0001,
+          "rtol": 0.001
+        }
+      ]
+    }
+  },
+  "config": {
+    "warmup_iterations": 5,
+    "measurement_iterations": 30,
+    "batch_sizes": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "cpu_threads": 4,
+    "random_seed": 42
+  },
+  "backend_settings": {},
+  "initialization_ms": null,
+  "baseline_before_load_rss_mb": 43.134976,
+  "environment": {
+    "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+    "distribution": {
+      "NAME": "NixOS",
+      "ID": "nixos",
+      "PRETTY_NAME": "NixOS 26.05 (Yarara)",
+      "ANSI_COLOR": "0;38;2;126;186;228",
+      "BUG_REPORT_URL": "https://github.com/NixOS/nixpkgs/issues",
+      "BUILD_ID": "26.05.20261010.6fcc160",
+      "CPE_NAME": "cpe:/o:nixos:nixos:26.05",
+      "DEFAULT_HOSTNAME": "nixos",
+      "DOCUMENTATION_URL": "https://nixos.org/learn.html",
+      "HOME_URL": "https://nixos.org/",
+      "ID_LIKE": "",
+      "IMAGE_ID": "",
+      "IMAGE_VERSION": "",
+      "LOGO": "nix-snowflake",
+      "SUPPORT_END": "2026-12-31",
+      "SUPPORT_URL": "https://nixos.org/community.html",
+      "VARIANT": "",
+      "VARIANT_ID": "",
+      "VENDOR_NAME": "NixOS",
+      "VENDOR_URL": "https://nixos.org/",
+      "VERSION": "26.05 (Yarara)",
+      "VERSION_CODENAME": "yarara",
+      "VERSION_ID": "26.05"
+    },
+    "architecture": "x86_64",
+    "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "logical_cpus": 16,
+    "physical_cpus": 8,
+    "python": "3.11.16",
+    "versions": {
+      "torch": "2.14.0",
+      "torchvision": "0.29.0",
+      "onnx": "1.22.0",
+      "onnxscript": "0.7.2",
+      "onnxruntime": "1.31.0",
+      "openvino": null,
+      "numpy": "2.4.6",
+      "psutil": "7.2.2",
+      "edge-infer-bench": "0.1.0"
+    },
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "governors": [
+      "performance"
+    ],
+    "system_memory_mb": 24584.884224,
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "KMP_AFFINITY": null
+    }
+  },
+  "status": "incomplete",
+  "results": [
+    {
+      "batch_size": 1,
+      "status": "skipped",
+      "reason": "OpenVINO unavailable: No module named 'openvino'. Install edge-infer-bench[openvino]. AMD CPU compatibility must be established by actual execution."
+    },
+    {
+      "batch_size": 4,
+      "status": "skipped",
+      "reason": "OpenVINO unavailable: No module named 'openvino'. Install edge-infer-bench[openvino]. AMD CPU compatibility must be established by actual execution."
+    },
+    {
+      "batch_size": 8,
+      "status": "skipped",
+      "reason": "OpenVINO unavailable: No module named 'openvino'. Install edge-infer-bench[openvino]. AMD CPU compatibility must be established by actual execution."
+    },
+    {
+      "batch_size": 16,
+      "status": "skipped",
+      "reason": "OpenVINO unavailable: No module named 'openvino'. Install edge-infer-bench[openvino]. AMD CPU compatibility must be established by actual execution."
+    }
+  ],
+  "timing_scope": "synchronous infer + output normalization; prepared host input; no loading"
+}

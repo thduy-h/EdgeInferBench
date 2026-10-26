@@ -1,0 +1,65 @@
+{
+  "os": "Linux-6.18.55-x86_64-with-glibc2.42",
+  "architecture": "x86_64",
+  "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+  "logical_cpus": 16,
+  "physical_cpus": 8,
+  "python": "3.11.16",
+  "versions": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "onnx": "1.22.0",
+    "onnxscript": "0.7.2",
+    "onnxruntime": "1.31.0",
+    "openvino": null,
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "edge-infer-bench": "0.1.0"
+  },
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "governors": [
+    "performance"
+  ],
+  "system_memory_mb": 24584.884224,
+  "thread_environment": {
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null,
+    "KMP_AFFINITY": null
+  },
+  "backends": {
+    "pytorch": {
+      "status": "importable",
+      "version": "2.14.0+cu130"
+    },
+    "onnxruntime": {
+      "status": "importable",
+      "version": "1.31.0",
+      "providers": [
+        "AzureExecutionProvider",
+        "CPUExecutionProvider"
+      ]
+    },
+    "openvino": {
+      "status": "unavailable",
+      "reason": "No module named 'openvino'"
+    }
+  }
+}
